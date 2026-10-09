@@ -1,5 +1,25 @@
 # Devir notu
 
+## 2026-10-09 — M2 tamam (site iskeleti + Popüler sayfası)
+
+**Yapılanlar**
+- Kullanıcı aprs-agent'ı referans gösterdi: site `site/` klasörüne taşındı (Pages kökü olacak; `docs/` notlar, yayımlanmaz),
+  görsel dil aprs-agent'tan (Adwaita değişkenleri, alt çizgili sekmeler, 10px köşe) - ondan farklı olarak açık + koyu tema.
+- `scripts/check_public_text.py` aprs-agent'tan uyarlandı (aynı özet listesi + bu projede görülen iki tanımlayıcı;
+  xlsx içindeki XML ve sqlite metnini de tarıyor, xlsx absPath'i yakalıyor). CI'da çalışıyor.
+- `site/`: `index.html` (tema/dil ilk çizimden önce), `css/app.css`, `js/i18n.js` (TR/EN, varsayılan tarayıcı dili),
+  `js/app.js` (hash yönlendirme `#/sayfa?param`, `replaceState` ile paylaşılabilir URL, karşılaştırma seçimi localStorage),
+  `js/pages/popular.js`, `js/pages/soon.js` (Hesapla/Karşılaştır/Tümü yer tutucu).
+- Popüler: öne çıkan 8 + 6 sınıf; bant çipleri, uzunluk, m/ft; maks (`val=max`) ve tahmini (`~`) üst simgeleri + dipnot.
+- Tarayıcıda denetlendi: konsol hatası yok, açık/koyu, EN, 375px mobil (taşma yok), 6 cm "veri yok" durumu.
+
+**Sıradaki:** M3 Hesaplayıcı (`#/calc?c=ID&f=&L=&P=&s=`) - `coax.lineCalc` hazır ve Excel'e karşı test edili.
+
+**Tuzaklar**
+- Tarayıcı paneli gizliyken ekran görüntüsü boş gelir; ölçümleri JS ile al.
+- Yerel sunucu: `python -m http.server 8766 --directory site` (kullanıcı da çalıştırıyor olabilir - port dolu hatası).
+- Türkçe yüzde ekleri sayıya göre değişir (%36'sı/%57'si); metinler ekten bağımsız kuruldu ("antene ulaşan: %36").
+
 ## 2026-10-09 — M1 tamam (veri ekleri, site verisi, hesap çekirdeği, eşlik testi)
 
 **Yapılanlar**

@@ -1,6 +1,6 @@
 # Web arayüzü planı
 
-Durum: M1 tamam, sıradaki M2 · 2026-10-09
+Durum: M1 ve M2 tamam, sıradaki M3 (Hesaplayıcı) · 2026-10-09
 Hedef: veritabanını sade, hızlı ve anlaşılır bir web sitesine dönüştürmek. Site, telsizcinin
 "hangi kabloyu almalıyım, şu uzunlukta ne kadar kaybederim?" sorusuna birkaç tıkla cevap vermeli.
 
@@ -10,7 +10,7 @@ Hedef: veritabanını sade, hızlı ve anlaşılır bir web sitesine dönüştü
 
 Diğer repolarla (ör. `turkey-repeaters`) aynı düzen:
 
-- **Statik site, GitHub Pages, kök `docs/`.** Sunucu yok, giriş yok, derleme adımı yok. Vanilla HTML/CSS/JS
+- **Statik site, GitHub Pages, kök `site/`** (aprs-agent düzeni: site ayrı klasörde, `docs/` yalnızca çalışma notları ve yayımlanmaz). Sunucu yok, giriş yok, derleme adımı yok. Vanilla HTML/CSS/JS
   (gerekirse tek dosya `docs/index.html` + küçük modüller).
 - **Veri:** `scripts/export_db.py` ek olarak `docs/data/cables.min.json` üretir. Site yalnızca bunu yükler
   (tahmini 150–250 KB, gzip ile ~40 KB).
@@ -133,7 +133,7 @@ Veritabanındaki güncel değerler (dB/100 m), kartlarda gösterilecek bilgiye �
 |---|---|---|
 | M0 | Repo, yapı, plan | Bu belge (tamam) |
 | M1 | Veri ekleri + `cables.min.json` + eşlik testi | `docs/data/`, `docs/js/coax.js`, `tests/`, CI (tamam) |
-| M2 | Site iskeleti, gezinme, tema, dil, **Popüler** sayfası | Yayınlanabilir ilk sürüm |
+| M2 | Site iskeleti, gezinme, tema, dil, **Popüler** sayfası | `site/` (tamam; Pages henüz açılmadı) |
 | M3 | **Hesaplayıcı** (+ paylaşılabilir URL) | |
 | M4 | **Karşılaştır**, **Tümü**, **Kablo detayı**, **Yöntem** | |
 | M5 | PWA, erişilebilirlik ve mobil cilası, GitHub Pages'i aç, repo homepage | `ta3hrj.github.io/coax-cable-database` |
