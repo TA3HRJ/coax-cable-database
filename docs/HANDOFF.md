@@ -1,5 +1,15 @@
 # Devir notu
 
+## 2026-10-09 — M3 tamam (Hesaplayıcı)
+
+- `site/js/pages/calc.js`, route `#/calc?c=&f=&L=&u=ft&P=&s=` (varsayılan LMR-400, 145 MHz, 20 m, 100 W, SWR 1).
+- Çıktılar `coax.lineCalc`'tan: antene ulaşan güç (öne çıkan), zayıflama, uyumlu/SWR/toplam kayıp, verici SWR, güç sınırı,
+  λ, λ/4, elektriksel uzunluk; uyarılar: güç sınırı aşımı, veri aralığının 2 katı ötesi, tahmini değer, maks değer, Z0≠50.
+- "Aynı koşulda aynı sınıf" listesi (aynı sınıf + empedans, toplam kayba göre; tıklayınca seçer).
+- Tarayıcıda Excel varsayılan girdileriyle birebir doğrulandı (78,8 W · 1,03 dB · SWR 1,38 · 1496 W · λ 1,757 m) ve
+  beş uç durum denendi. 1280 px yan yana, 375 px alt alta, taşma yok.
+- Sıradaki: M4. Popüler kartlarındaki "Karşılaştır" seçimi `localStorage.cmp`'de duruyor.
+
 ## 2026-10-09 — M2 tamam (site iskeleti + Popüler sayfası)
 
 **Yapılanlar**

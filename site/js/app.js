@@ -2,9 +2,10 @@
 import { t, lang, setLang, applyStatic } from "./i18n.js";
 import { renderPopular } from "./pages/popular.js";
 import { renderSoon } from "./pages/soon.js";
+import { renderCalc } from "./pages/calc.js";
 
 const view = document.getElementById("view");
-const ROUTES = { popular: renderPopular, calc: renderSoon, compare: renderSoon, all: renderSoon };
+const ROUTES = { popular: renderPopular, calc: renderCalc, compare: renderSoon, all: renderSoon };
 
 const ctx = {
   db: null,
