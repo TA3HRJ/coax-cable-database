@@ -1,5 +1,18 @@
 # Devir notu
 
+## 2026-10-09 — Bükülme yarıçapı gösterimi düzeltildi (kullanıcı bildirimi)
+
+- Kullanıcı LMR-400'ün bükülmesinin (25 mm) kalınlığına göre düşük göründüğünü bildirdi. Veri kaynakla aynıydı; sorun
+  gösterimdi: kartta tek seferlik/kurulum değeri "bükülme" etiketiyle gösteriliyordu.
+- Kart artık: tekrarlı değer varsa "tekrarlı bükülme"; yoksa Times için "tek sefer bükülme" (kurulum), diğerleri için
+  "en küçük bükülme" (üretici tür belirtmiyor; Belden "Installation Min." ~10×OD). İpucu metinleri var.
+- LMR-195/200/500/600 tekrarlı değerleri model datasheet'lerinden eklendi (S054–S057; kurulum değerinin 4 katı).
+  LMR-100A/300/900 datasheet'leri Fairview'da yok (404) - kurulum değeri ve notla kaldı.
+- Yeniden üretimden önce artık: `~$` kilidi VE `git diff --quiet -- TA3HX_Coax_Database.xlsx` (kullanıcı değişikliği yok) kontrolü;
+  ikisinden biri tutmazsa komut duruyor.
+- Tuzak: python http.server ile tarayıcı ES modüllerini önbellekte tutuyor; değişiklik sonrası `fetch(f,{cache:'reload'})`
+  ile yenile. Yayında sürüm/önbellek stratejisi M5'te (service worker) ele alınmalı.
+
 ## 2026-10-09 — M3 tamam (Hesaplayıcı)
 
 - `site/js/pages/calc.js`, route `#/calc?c=&f=&L=&u=ft&P=&s=` (varsayılan LMR-400, 145 MHz, 20 m, 100 W, SWR 1).

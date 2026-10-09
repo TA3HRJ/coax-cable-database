@@ -133,9 +133,13 @@ export function renderPopular(view, ctx) {
     const m = [];
     if (c.vf) m.push(`${t("vf")} ${fmt(c.vf, 2)}`);
     if (c.pk) m.push(`${fmt(c.pk, c.pk < 10 ? 1 : 0)} kW ${t("peak")}`);
-    if (c.br1) m.push(`${t("bend")} ${fmt(c.br1, 0)} mm`);
+    // Bükülme: tekrarlı değer varsa o (pratikte önemli olan), yoksa tek seferlik değer açık etiketle.
+    // Üreticiler iki ayrı değer yayımlar; tek seferlik/kurulum değeri LMR ve süper esnek tiplerde çapın ~2,5 katı olabilir.
+    if (c.br2) m.push([`${t("bend_rep")} ${fmt(c.br2, 0)} mm`, t("bend_rep_title")]);
+    else if (c.br1 && /^Times/.test(c.m)) m.push([`${t("bend_once")} ${fmt(c.br1, 0)} mm`, t("bend_once_title")]);
+    else if (c.br1) m.push([`${t("bend_min")} ${fmt(c.br1, 0)} mm`, t("bend_min_title")]);
     if (c.bur && /evet|uygun/i.test(c.bur)) m.push(t("burial"));
-    meta.innerHTML = m.map((x) => `<span>${esc(x)}</span>`).join("");
+    meta.innerHTML = m.map((x) => Array.isArray(x) ? `<span title="${esc(x[1])}">${esc(x[0])}</span>` : `<span>${esc(x)}</span>`).join("");
 
     const actions = el("div", "c-actions");
     const calc = Object.assign(el("a", "btn primary"), { textContent: `${t("calc")} →` });

@@ -104,6 +104,18 @@ SOURCES_X = [
      "kaynaklar/S053_Belden_H2000Flex_DMT.pdf",
      "Belden'in güncel kataloğunda H2000 Flex bulunamadı; Belden 2006 tarihli föyüne (YE00115) erişilemedi. "
      "Değerler satıcı sayfalarıyla tutarlı (PCS: 50 MHz 2.7, 100 MHz 3.9; koax24: 10 MHz 1.2, 100 MHz 3.8 dB/100m)."),
+    ("S054", "Times Microwave Systems", "LMR-200 Low Loss Flexible Coax Cable Data Sheet", "LMR-200", "-", "2023",
+     "Distribütör kopyası (Fairview Microwave)", "https://www.fairviewmicrowave.com/images/productPDF/LMR-200.pdf",
+     "kaynaklar/S054_TimesMicrowave_LMR-200_Fairview.pdf", "Yalnızca tekrarlı bükülme yarıçapı için kullanıldı (zayıflama: S001)."),
+    ("S055", "Times Microwave Systems", "LMR-195 Low Loss Flexible Coax Cable Data Sheet", "LMR-195", "-", "2023",
+     "Distribütör kopyası (Fairview Microwave)", "https://www.fairviewmicrowave.com/images/productPDF/LMR-195.pdf",
+     "kaynaklar/S055_TimesMicrowave_LMR-195_Fairview.pdf", "Yalnızca tekrarlı bükülme yarıçapı için kullanıldı (zayıflama: S001)."),
+    ("S056", "Times Microwave Systems", "LMR-600 Low Loss Flexible Coax Cable Data Sheet", "LMR-600", "-", "2023",
+     "Distribütör kopyası (Fairview Microwave)", "https://www.fairviewmicrowave.com/images/productPDF/LMR-600.pdf",
+     "kaynaklar/S056_TimesMicrowave_LMR-600_Fairview.pdf", "Yalnızca tekrarlı bükülme yarıçapı için kullanıldı (zayıflama: S001)."),
+    ("S057", "Times Microwave Systems", "LMR-500 Low Loss Flexible Coax Cable Data Sheet", "LMR-500", "-", "2023",
+     "Distribütör kopyası (Fairview Microwave)", "https://www.fairviewmicrowave.com/images/productPDF/LMR-500.pdf",
+     "kaynaklar/S057_TimesMicrowave_LMR-500_Fairview.pdf", "Yalnızca tekrarlı bükülme yarıçapı için kullanıldı (zayıflama: S001)."),
 ]
 # S045 revizyon tarihi farklı
 SOURCES_X = [s if s[0] != "S045" else s[:5] + ("2026-05-27",) + s[6:] for s in SOURCES_X]
@@ -469,6 +481,21 @@ CABLES_X = [
       voltage_v=3700, voltage_note="Gerilim değeri (RMS)", weight_kg_km=141.4, tensile_kg=64.9, outdoor_uv="İç/dış mekan",
       fire_class="VW-1", primary_source_id="S047", notes=""),
 ]
+
+# Times seçim kılavuzu (S001) yalnızca kurulum (tek sefer) bükülme yarıçapını verir; tekrarlı değer modelin kendi
+# datasheet'inden. (cable_id -> (tekrarlı mm, kaynak))
+BEND_REPEATED = {
+    "TMS-LMR200": (50.8, "S054"), "TMS-LMR195": (50.8, "S055"), "TMS-LMR600": (152.4, "S056"), "TMS-LMR500": (127.0, "S057"),
+}
+for _c in CABLES_X:
+    if _c["cable_id"] in BEND_REPEATED:
+        _mm, _sid = BEND_REPEATED[_c["cable_id"]]
+        _c["bend_radius_repeated_mm"] = _mm
+        _c["notes"] = (_c.get("notes", "") + f" Tekrarlı bükülme yarıçapı: {_sid}.").strip()
+for _c in CABLES_X:
+    if _c["cable_id"] in ("TMS-LMR100A", "TMS-LMR300", "TMS-LMR900"):
+        _c["notes"] = (_c.get("notes", "") + " Bükülme yarıçapı yalnızca kurulum (tek sefer) değeridir; tekrarlı bükülme için "
+                       "üreticinin model datasheet'ine bakın (diğer LMR modellerinde 4 katı).").strip()
 
 # --------------------------------------------------------------------------------------------- ELLE GİRİLEN NOKTALAR
 ATT_MANUAL = [
