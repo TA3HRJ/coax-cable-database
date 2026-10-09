@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- koaksiyel kablo kesiti: kılıf, örgü, dielektrik, iç iletken -->
-  <circle cx="32" cy="32" r="30" fill="#242424"/>
-  <circle cx="32" cy="32" r="23" fill="none" stroke="#3584e4" stroke-width="5"/>
-  <circle cx="32" cy="32" r="16" fill="#deddda"/>
-  <circle cx="32" cy="32" r="6" fill="#f5c211"/>
+  <!-- koaksiyel kablo kesiti: kılıf, örgü, dielektrik, iç iletken. aprsagent.com ailesi renkleri:
+       mürekkep #22201a, airmail kırmızısı #b0413e, kâğıt #f6f3ea, bakır #b57a18 -->
+  <circle cx="32" cy="32" r="30" fill="#22201a"/>
+  <circle cx="32" cy="32" r="23" fill="none" stroke="#b0413e" stroke-width="5"/>
+  <circle cx="32" cy="32" r="16" fill="#f6f3ea"/>
+  <circle cx="32" cy="32" r="6" fill="#b57a18"/>
 </svg>

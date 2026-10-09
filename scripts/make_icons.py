@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""site/assets/icon.svg ile aynı tasarımda PWA PNG simgeleri üretir (koaksiyel kablo kesiti).
+"""site/assets/icon.svg ile aynı tasarımda PWA PNG simgeleri üretir (koaksiyel kablo kesiti, aprsagent.com ailesi renkleri).
 Kullanım: python scripts/make_icons.py   (Pillow gerekir)"""
 import os
 from PIL import Image, ImageDraw
@@ -14,13 +14,13 @@ def icon(size, maskable=False):
     c = s / 2
     k = 0.8 if maskable else 1.0  # maskable: güvenli alan için içerik küçültülür, zemin tam dolu
     if maskable:
-        d.rectangle([0, 0, s, s], fill="#242424")
+        d.rectangle([0, 0, s, s], fill="#22201a")
     r = lambda f: f * s / 64 * k  # noqa: E731
-    d.ellipse([c - r(30), c - r(30), c + r(30), c + r(30)], fill="#242424")
-    d.ellipse([c - r(25.5), c - r(25.5), c + r(25.5), c + r(25.5)], fill="#3584e4")
-    d.ellipse([c - r(20.5), c - r(20.5), c + r(20.5), c + r(20.5)], fill="#242424")
-    d.ellipse([c - r(16), c - r(16), c + r(16), c + r(16)], fill="#deddda")
-    d.ellipse([c - r(6), c - r(6), c + r(6), c + r(6)], fill="#f5c211")
+    d.ellipse([c - r(30), c - r(30), c + r(30), c + r(30)], fill="#22201a")
+    d.ellipse([c - r(25.5), c - r(25.5), c + r(25.5), c + r(25.5)], fill="#b0413e")
+    d.ellipse([c - r(20.5), c - r(20.5), c + r(20.5), c + r(20.5)], fill="#22201a")
+    d.ellipse([c - r(16), c - r(16), c + r(16), c + r(16)], fill="#f6f3ea")
+    d.ellipse([c - r(6), c - r(6), c + r(6), c + r(6)], fill="#b57a18")
     return img.resize((size, size), Image.LANCZOS)
 
 
