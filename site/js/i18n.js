@@ -89,6 +89,8 @@ export const STRINGS = {
 <p>Veritabanı Excel çalışma kitabı, SQLite ve CSV olarak <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>'da indirilebilir. Derlenmiş veri CC BY 4.0, kod MIT lisanslıdır. Üretici datasheet'leri sahiplerine aittir ve burada yeniden dağıtılmaz; yalnızca başlık ve adresleri listelenir.</p>
 <p>Hatalı bir değer ya da eksik bir kablo görürseniz GitHub'da <a href="https://github.com/TA3HRJ/coax-cable-database/issues/new/choose" rel="noopener">bir issue açabilirsiniz</a>.</p>`,
     foot_method: "Yöntem ve kaynaklar",
+    fam_tools: "Telsizci araçları", fam_coax: "Kablo veritabanı", fam_rep: "Röleler", fam_exam: "Sınav hazırlık",
+    fam_contacts: "AnyTone rehber", fam_op: "İşleten: TA3HX", fam_home_title: "aprsagent.com — Telsizci araçları",
     foot_legal: "Marka ve ürün adları sahiplerinindir; bu site hiçbir üreticiyle bağlantılı değildir. Değerler bilgi amaçlıdır, garanti verilmez.",
     foot_legal_link: "Ticari markalar ve sorumluluk reddi",
     legal_body: `<h2>Ticari markalar</h2>
@@ -204,6 +206,8 @@ export const STRINGS = {
 <p>The database can be downloaded from <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a> as an Excel workbook, SQLite and CSV. The compiled data is CC BY 4.0, the code MIT. Manufacturer datasheets belong to their owners and are not redistributed here; only their titles and URLs are listed.</p>
 <p>If you spot a wrong value or a missing cable, please <a href="https://github.com/TA3HRJ/coax-cable-database/issues/new/choose" rel="noopener">open an issue on GitHub</a>.</p>`,
     foot_method: "Method and sources",
+    fam_tools: "Ham radio tools", fam_coax: "Coax cables", fam_rep: "Repeaters", fam_exam: "Exam prep",
+    fam_contacts: "AnyTone contacts", fam_op: "Operated by TA3HX", fam_home_title: "aprsagent.com — Ham radio tools",
     foot_legal: "Brand and product names belong to their owners; this site is not affiliated with any manufacturer. Values are for information only, without warranty.",
     foot_legal_link: "Trademarks and disclaimer",
     legal_body: `<h2>Trademarks</h2>

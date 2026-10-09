@@ -89,22 +89,33 @@ let rendered = false;
 function renderFooter() {
   const d = ctx.db;
   const foot = document.getElementById("foot");
-  foot.innerHTML = `${t("foot", d.v, d.cables.length, Object.keys(d.src).length)} · ${t("foot_license")} · ` +
-    `<a href="#/method">${t("foot_method")}</a> · <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>` +
-    `<br><span class="foot-legal">${t("foot_legal")} <a href="#/method?s=legal">${t("foot_legal_link")}</a></span>`;
+  // aprsagent.com ailesinin ortak alt bilgisi: araçlar satırı (bu site işaretli), sitenin satırı, yasal not
+  const tools = [["https://aprsagent.com/", "aprsagent.com"], ["https://coax.aprsagent.com/", t("fam_coax"), true],
+    ["https://repeaters.aprsagent.com/", t("fam_rep")], ["https://sinav.aprsagent.com/", t("fam_exam")],
+    ["https://contacts.aprsagent.com/", t("fam_contacts")]];
+  foot.innerHTML = `<div class="wrap">` +
+    `<nav class="fam-tools" aria-label="${t("fam_tools")}"><b>${t("fam_tools")}</b>` +
+    tools.map(([u, l, me]) => `<a href="${u}"${me ? ' aria-current="page"' : ""}>${l}</a>`).join("") + `</nav>` +
+    `<div class="fam-line"><span>${t("foot", d.v, d.cables.length, Object.keys(d.src).length)}</span><span>${t("foot_license")}</span>` +
+    `<a href="#/method">${t("foot_method")}</a><a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>` +
+    `<span class="sp"></span><span>${t("fam_op")}</span></div>` +
+    `<p class="fam-legal">${t("foot_legal")} <a href="#/method?s=legal">${t("foot_legal_link")}</a></p></div>`;
 }
 
 function initHeader() {
   // Atlama bağlantısı: hash yönlendirmesini bozmadan odağı içeriğe taşı
   document.querySelector(".skip").addEventListener("click", (e) => { e.preventDefault(); view.focus(); });
-  const bl = document.getElementById("btn-lang");
+  const langBtns = [...document.querySelectorAll(".lang button")];
   const sync = () => {
-    bl.textContent = lang === "tr" ? "EN" : "TR";
+    langBtns.forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"));
     document.title = `${t("app_title")} · TA3HX`;
     document.querySelector('nav.tab-bar').setAttribute("aria-label", t("nav_label"));
     applyStatic();
   };
-  bl.addEventListener("click", () => { setLang(lang === "tr" ? "en" : "tr"); sync(); render(); });
+  langBtns.forEach((b) => b.addEventListener("click", () => {
+    if (b.dataset.lang === lang) return;
+    setLang(b.dataset.lang); sync(); render();
+  }));
   document.getElementById("btn-theme").addEventListener("click", () => {
     const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;

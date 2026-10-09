@@ -53,6 +53,7 @@ kaydedilmemiş dosyada formül hücreleri boş gelir.
 - xlsx üst verisinde yerel yol ve kişi adı olur; commit öncesi `export_db.py` (ya da `sanitize_xlsx.py`) çalışmış olmalı.
   Kökteki orijinal eski tablo kişisel üst veri içerir ve `.gitignore`'da.
 - `kaynaklar/README.md` sources tablosundan üretilir; kaynak ekleyince yeniden üret.
+- **Görsel dil aprsagent.com ailesinden:** `C:\Claude Projects\_shared\aprsagent-site-standardi\` (renkler, başlık çubuğu, alt bilgi, yasal metin). Renk/yazı değeri icat etme; standarttan al, standart değişirse `site/css/app.css`'i ona göre güncelle. Başlıktaki aprsagent.com geri bağlantısı ve alt bilgideki "Telsizci araçları" satırı zorunlu.
 - Git kimliği: `TA3HX <136229226+TA3HRJ@users.noreply.github.com>`; commit mesajları Türkçe.
 
 ## Oturum sonu

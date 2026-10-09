@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Koaksiyel Kablo Veritabanı · TA3HX</title>
 <meta name="description" content="Amatör telsiz için kaynaklı koaksiyel kablo zayıflama veritabanı ve hesaplayıcı / Referenced coax cable attenuation database and calculator for amateur radio">
-<meta name="theme-color" content="#242424" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1a16" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f3ea" media="(prefers-color-scheme: light)">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -28,14 +28,20 @@
 </head>
 <body>
 <a class="skip" href="#view" data-i="skip">İçeriğe geç</a>
-<header class="top">
-  <a class="brand" href="#/popular">
-    <img src="assets/icon.svg" alt="" width="28" height="28">
-    <span class="brand-txt"><b data-i="app_title">Koaksiyel Kablo Veritabanı</b><small>TA3HX</small></span>
-  </a>
-  <div class="top-ctl">
-    <button class="hdr-btn" id="btn-lang" type="button" aria-label="Dil / Language">EN</button>
+<header class="fam-bar">
+  <div class="fam-row">
+    <a class="fam-home" href="https://aprsagent.com/#tools" data-i-title="fam_home_title" title="aprsagent.com — Telsizci araçları">
+      <img src="assets/aprsagent-mark.svg" alt="" width="24" height="24"><span class="t">aprsagent.com</span>
+    </a>
+    <span class="fam-sep" aria-hidden="true"></span>
+    <a class="fam-site" href="#/popular" data-i-title="app_title" title="Koaksiyel Kablo Veritabanı">COAX<span>-DB</span></a>
+    <span class="sp"></span>
+    <div class="lang" role="group" aria-label="Dil / Language">
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="tr" aria-pressed="true">TR</button>
+    </div>
     <button class="hdr-btn" id="btn-theme" type="button" data-i-title="theme_toggle" title="Tema">◐</button>
+    <a class="ghl" href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub ↗</a>
   </div>
 </header>
 <nav class="tab-bar" role="tablist" aria-label="Sayfalar">
@@ -48,6 +54,6 @@
   <p class="loading" data-i="loading">Veri yükleniyor…</p>
   <noscript><p class="empty">Bu site JavaScript gerektirir. / This site requires JavaScript.</p></noscript>
 </main>
-<footer class="foot" id="foot"></footer>
+<footer class="fam-foot" id="foot"></footer>
 </body>
 </html>

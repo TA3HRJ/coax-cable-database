@@ -7,7 +7,7 @@
  *
  * PRECACHE listesi değişirse CACHE_VERSION'ı artırın.
  */
-const CACHE_VERSION = "v7";
+const CACHE_VERSION = "v8";
 const CACHE_NAME = `coax-db-${CACHE_VERSION}`;
 
 const PRECACHE = [
@@ -22,6 +22,7 @@ const PRECACHE = [
   "./js/chart.js",
   "./js/cableart.js",
   "./js/datatr.js",
+  "./assets/aprsagent-mark.svg",
   "./js/pages/popular.js",
   "./js/pages/calc.js",
   "./js/pages/compare.js",

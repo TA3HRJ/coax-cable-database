@@ -16,7 +16,7 @@ export function seriesColor(i) {
  * pin: { f, title, rows: [{ i, label, y (çizgideki değer), html (kutudaki sonuç) }], more?, onMore? }
  */
 export function logLogChart(series, opts) {
-  const W = 760, H = opts.height || 380, M = { l: 52, r: series.length <= 4 ? 96 : 16, t: 12, b: 34 };
+  const W = 760, H = opts.height || 380, M = { l: 52, r: series.length <= 4 ? 96 : 16, t: 26, b: 34 };
   const iw = W - M.l - M.r, ih = H - M.t - M.b;
   const ys = series.flatMap((s) => [...s.pts, ...(s.markers || [])].map((p) => p[1])).filter((y) => y > 0);
   let ymin = Math.pow(10, Math.floor(Math.log10(Math.min(...ys))));
@@ -45,7 +45,7 @@ export function logLogChart(series, opts) {
       const f = m * Math.pow(10, d);
       if (f < opts.xmin || f > opts.xmax) continue;
       line(grid, X(f), M.t, X(f), M.t + ih, m === 1 ? "g-major" : "g-minor");
-      if (m === 1 || iw > 500) text(grid, X(f), H - M.b + 18, opts.fmtX(f), "ax", "middle");
+      if (m === 1 || iw > 500) text(grid, X(f), H - M.b + 18, opts.fmtX(f, f >= 1000), "ax", "middle"); // 1000 MHz ve üstü GHz: komşu etiketle çakışmasın
     }
   }
   for (let d = Math.round(ly0); d <= Math.round(ly1); d++) {
@@ -57,7 +57,7 @@ export function logLogChart(series, opts) {
     }
   }
   text(svg, M.l + iw, H - 4, opts.xTitle || "MHz", "ax-t", "end");
-  text(svg, 4, M.t + 10, opts.unit, "ax-t", "start");
+  text(svg, 4, 13, opts.unit, "ax-t", "start"); // birim eksenin üstünde, en üst etiketle çakışmasın
 
   // seriler
   series.forEach((s) => {
