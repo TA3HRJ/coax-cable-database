@@ -1,0 +1,32 @@
+Kaynak S040 - distribütör ürün sayfası (RF Parts); üretici datasheet'i değil
+URL    : https://www.rfparts.com/coax/coax-other/buryflex.html
+Erişim : 2026-10-09
+Ürün   : BURY-FLEX, Davis RF (Orion Wire Company bölümü)
+
+YAPI
+İç iletken : 9.5 AWG örgülü çıplak bakır
+Dielektrik : Köpük PE
+Ekran 1    : Yapışık folyo, %100
+Ekran 2    : Kalaylı bakır örgü, %97
+Kılıf      : UV dayanımlı siyah PE (toprağa gömülebilir)
+Dış çap    : 0.405" (10.3 mm) nominal
+
+ELEKTRİKSEL
+Empedans   : 50 Ω
+Hız faktörü: %82 nominal
+Kapasite   : 24.6 pF/ft
+
+ZAYIFLAMA (dB/100 ft)
+   10 MHz 0.6
+   50 MHz 1.1
+  100 MHz 1.5
+  200 MHz 2.0
+  400 MHz 2.8
+  700 MHz 3.9
+  900 MHz 4.4
+ 1000 MHz 4.8
+
+MEKANİK
+Bükülme yarıçapı: 2" minimum
+Ağırlık         : 0.1 lb/ft nominal
+Güç, gerilim ve sıcaklık sayfada verilmemiş.

@@ -1,0 +1,61 @@
+legacy_key,legacy_sheet,legacy_row,legacy_name,z0_old,od_old_mm,cable_id,match_type,status,note,z0_new,od_new_mm
+S1-R05,Sayfa1 (2),5,RG178 B/U,50,1.8,BEL-83265,Eşdeğer tip,Doğrulandı,,50,1.8
+S1-R06,Sayfa1 (2),6,RG174/U,50,2.6,BEL-8216,Eşdeğer tip,Doğrulandı,Belden 8216 RG-174 tipi.,50,2.79
+S1-R07,Sayfa1 (2),7,RG316,50,2.6,BEL-84316,Eşdeğer tip,Doğrulandı,,50,2.5
+S1-R08,Sayfa1 (2),8,RG188 A/U,50,,BEL-83269,Eşdeğer tip,Doğrulandı,,50,2.54
+S1-R09,Sayfa1 (2),9,RG58C/U,50,5.8,BEL-8259,Eşdeğer tip,Doğrulandı,Belden 8259 RG-58 tipi; RG-58C/U MIL tanımından farklı olabilir.,50,4.9
+S1-R10,Sayfa1 (2),10,RG58 Messi and Paoloni,50,5,MP-RG58CU,Birebir,Doğrulandı,,50,5
+S1-R11,Sayfa1 (2),11,RG223/U,50,5.4,BEL-9273,Eşdeğer tip,Doğrulandı,,50,5.38
+S1-R12,Sayfa1 (2),12,RG58 CELLFOAM™,50,4,BEL-8219,Eşdeğer tip,Doğrulandı,'Cellfoam' adlı bir üretici ürünü bulunamadı; köpük dielektrikli RG-58 (Belden 8219) ile karşılaştırıldı.,54,4.9
+S1-R13,Sayfa1 (2),13,RG400/U,50,4.95,HAR-M17-128-RG400,Eşdeğer tip,Doğrulandı,,50,5
+S1-R14,Sayfa1 (2),14,RG142B/U Flexible,50,4.95,BEL-83242,Eşdeğer tip,Doğrulandı,,50,4.95
+S1-R15,Sayfa1 (2),15,RG8X Belden,52,6.15,BEL-9258,Birebir,Doğrulandı,,50,6.15
+S1-R16,Sayfa1 (2),16,RG8X (RG-8/U-Mini),52,6.14,BEL-9258,Eşdeğer tip,Doğrulandı,960 MHz (8.8) -> 1.2 GHz (15.9) geçişi fiziksel olarak tutarsız (%25 frekans artışına %80 kayıp artışı).,50,6.15
+S1-R17,Sayfa1 (2),17,RG58 CellFoil® RFI (9006),50,5,,,Kaynak bulunamadı,Kaynak bulunamadı: 'RG58 CellFoil (9006)' için hiçbir üretici/datasheet zayıflama verisi yayımlamıyor (yalnızca bir satıcının SKU'su).,,
+S1-R18,Sayfa1 (2),18,LMR195-LMR200,50,5,TMS-LMR195,Eşdeğer tip,Doğrulandı,"Satır LMR-195 ve LMR-200'ü birlikte veriyor; LMR-195 ile karşılaştırıldı, LMR-200 de ayrıca eklendi.",50,4.95
+S1-R19,Sayfa1 (2),19,Belden H155,50,5.4,BEL-H155A01,Birebir,Doğrulandı,PE kılıflı sürüm ile karşılaştırıldı.,50,5.4
+S1-R20,Sayfa1 (2),20,AIRBORNE 5™ Messi and Paoloni,50,5,MP-AIRBORNE5,Birebir,Doğrulandı,,50,5
+S1-R21,Sayfa1 (2),21,RG62A/U,50,6.2,BEL-9269,Eşdeğer tip,Doğrulandı,RG-62A/U standart olarak 93 Ω'dur; tabloda 50 Ω yazıyor - doğrulanmalı.,93,6.07
+S1-R22,Sayfa1 (2),22,LMR240 (TWB2401),50,6.1,TMS-LMR240,Birebir,Doğrulandı,,50,6.1
+S1-R23,Sayfa1 (2),23,RG213/214,50,10.3,BEL-8267,Eşdeğer tip,Doğrulandı,"Satır 25/26 (RG213/U, RG214/U) ile tekrar.",50,10.3
+S1-R24,Sayfa1 (2),24,HYPERFLEX 5™ Messi and Paoloni,50,5.4,MP-HYPERFLEX5,Birebir,Doğrulandı,,50,5.4
+S1-R25,Sayfa1 (2),25,RG213/U,50,10.3,BEL-8267,Eşdeğer tip,Doğrulandı,,50,10.3
+S1-R26,Sayfa1 (2),26,RG214/U,50,10.3,BEL-8268,Eşdeğer tip,Doğrulandı,RG-214/U çift gümüş kaplı örgülüdür; RG-213 ile aynı kayıp kabul edilmemeli.,50,10.8
+S1-R27,Sayfa1 (2),27,RG213/U Messi and Paoloni,50,10.2,MP-RG213U,Birebir,Doğrulandı,,50,10.3
+S1-R28,Sayfa1 (2),28,"1/4"" Superflex (CELLFLEX SCF14-50J)",50,7.8,RFS-SCF14-50J,Birebir,Doğrulandı,,50,7.8
+S1-R29,Sayfa1 (2),29,ULTRAFLEX 7™ Messi and Paoloni,50,7.3,MP-ULTRAFLEX7,Birebir,Doğrulandı,,50,7.3
+S1-R30,Sayfa1 (2),30,"3/8"" RF9914",50,10,BEL-9914,Eşdeğer tip,Doğrulandı,"'RF9914' Belden 9914 muadili kabul edildi; 9914 10.2 mm RG-8 boyutundadır, 3/8"" değil.",50,10.2
+S1-R31,Sayfa1 (2),31,"3/8"" Belden H1000",50,10.3,BEL-H1000C1,Birebir,Doğrulandı,"H1000 10.3 mm RG-8 boyutundadır, 3/8"" değil.",50,10.3
+S1-R32,Sayfa1 (2),32,RG8 Type (Ericsson TZC 500),52,10.16,ERI-TZC50032,Eşdeğer tip,Doğrulandı,"Satır 35 ile aynı ad, farklı çap (10.16 / 10.9 mm) ve farklı değerler - tekrar.",50,10.16
+S1-R33,Sayfa1 (2),33,"3/8"" BURY-FLEX™ Davis RF",50,9.5,DAV-BURYFLEX,Birebir,Doğrulandı,,50,10.3
+S1-R34,Sayfa1 (2),34,RG213 FOAM,50,10.3,BEL-9914,Eşdeğer tip,Doğrulandı,'RG213 FOAM' için tek bir ürün yok; köpük dielektrikli RG-8 boyutu (Belden 9914) ile karşılaştırıldı.,50,10.2
+S1-R35,Sayfa1 (2),35,RG8 Type (Ericsson TZC 500),52,10.9,ERI-TZC50032,Eşdeğer tip,Doğrulandı,Satır 32 ile aynı ad - tekrar.,50,10.16
+S1-R36,Sayfa1 (2),36,"3/8"" Superflex (FSJ2-50) (CELLFLEX SCF38-50J)",50,10.2,CS-FSJ2-50,Birebir,Doğrulandı,RFS SCF38-50J de ayrıca eklendi.,50,10.4
+S1-R37,Sayfa1 (2),37,ULTRAFLEX 10™ Messi and Paoloni,50,10.3,MP-ULTRAFLEX10,Birebir,Doğrulandı,,50,10.3
+S1-R38,Sayfa1 (2),38,LMR400,50,10.3,TMS-LMR400,Birebir,Doğrulandı,,50,10.29
+S1-R39,Sayfa1 (2),39,"1/4"" HELIAX® (FSJ1-50A)",50,7.4,CS-FSJ1-50A,Birebir,Doğrulandı,"Eski değerler FSJ1-50A'dan %26-40 düşük; 3/8"" FSJ2-50 ile neredeyse birebir örtüşüyor - satıra büyük olasılıkla FSJ2-50 verisi girilmiş.",50,7.366
+S1-R40,Sayfa1 (2),40,HYPERFLEX 10™ Messi and Paoloni,50,10.3,MP-HYPERFLEX10,Birebir,Doğrulandı,,50,10.3
+S1-R41,Sayfa1 (2),41,AIRBORNE 10™ Messi and Paoloni,50,10.3,MP-AIRBORNE10,Birebir,Doğrulandı,,50,10.3
+S1-R42,Sayfa1 (2),42,"1/2"" Superflex (FSJ4-50B HELIAX®)",50,13.5,CS-FSJ4-50B,Birebir,Doğrulandı,,50,13.2
+S1-R43,Sayfa1 (2),43,"1/2"" 10D-FB Type",50,13,GEN-10D-FB,Eşdeğer tip,Doğrulandı,,50,13.1
+S1-R44,Sayfa1 (2),44,"3/8"" LDF",50,12.7,CS-LDF2-50,Birebir,Doğrulandı,Eski çap 12.7 mm; LDF2-50 dış çapı 11.2 mm.,50,11.176
+S1-R45,Sayfa1 (2),45,"3/8"" HELIAX®",50,12.7,CS-LDF2-50,Eşdeğer tip,Doğrulandı,"3/8"" HELIAX = LDF2-50; satır 44 ile aynı kablo.",50,11.176
+S1-R46,Sayfa1 (2),46,ULTRAFLEX 13™ Messi and Paoloni,50,12.7,MP-ULTRAFLEX13,Birebir,Doğrulandı,,50,12.7
+S1-R47,Sayfa1 (2),47,LMR500,50,12.7,TMS-LMR500,Birebir,Doğrulandı,,50,12.7
+S1-R48,Sayfa1 (2),48,HYPERFLEX 13™ Messi and Paoloni,50,12.7,MP-HYPERFLEX13,Birebir,Doğrulandı,,50,12.7
+S1-R49,Sayfa1 (2),49,LMR600,50,15,TMS-LMR600,Birebir,Doğrulandı,,50,14.99
+S1-R50,Sayfa1 (2),50,"1/2"" HELIAX®",50,16,CS-LDF4-50A,Eşdeğer tip,Doğrulandı,"LDF4-50A zaten 1/2"" HELIAX; satır 51 ile aynı kablo. Eski çap 16 mm, datasheet 15.875 mm.",50,15.875
+S1-R51,Sayfa1 (2),51,"1/2"" LDF",50,13.6,CS-LDF4-50A,Birebir,Doğrulandı,Eski çap 13.6 mm; datasheet dış çap 15.875 mm (13.97 mm oluklu bakır dış iletken).,50,15.875
+S1-R52,Sayfa1 (2),52,LMR900,50,22,TMS-LMR900,Birebir,Doğrulandı,,50,22.1
+S1-R53,Sayfa1 (2),53,"7/8"" HELIAX®",50,28,CS-LDF5-50A,Eşdeğer tip,Doğrulandı,"7/8"" HELIAX = LDF5-50A; satır 55 ile aynı kablo.",50,27.4
+S1-R54,Sayfa1 (2),54,LMR1200,50,28,TMS-LMR1200,Birebir,Doğrulandı,,50,30.48
+S1-R55,Sayfa1 (2),55,"7/8"" LDF",50,28,CS-LDF5-50A,Birebir,Doğrulandı,,50,27.4
+S1-R56,Sayfa1 (2),56,"1 1/4"" LDF",50,40,CS-LDF6-50,Birebir,Doğrulandı,,50,39.4
+S1-R57,Sayfa1 (2),57,"1 1/4"" HELIAX®",50,40,CS-LDF6-50,Eşdeğer tip,Doğrulandı,"1-1/4"" HELIAX = LDF6-50; satır 56 ile aynı kablo.",50,39.4
+S1-R58,Sayfa1 (2),58,"1 5/8"" LDF",50,50,CS-LDF7-50A,Birebir,Doğrulandı,,50,50.3
+S1-R59,Sayfa1 (2),59,"1 5/8"" HELIAX®",50,50,CS-LDF7-50A,Eşdeğer tip,Doğrulandı,"1-5/8"" HELIAX = LDF7-50A; satır 58 ile aynı kablo.",50,50.3
+S2-R02,Sayfa2,2,RG179,75,,BEL-83264,Eşdeğer tip,Doğrulandı,"75 Ω tablo: başlık yok, değerler bir sütun kaymış varsayıldı (E=çap, F=1-10 MHz, ...).",75,2.54
+S2-R03,Sayfa2,3,RG59B/U,75,6.2,BEL-8263,Eşdeğer tip,Doğrulandı,"75 Ω tablo: başlık yok, değerler bir sütun kaymış varsayıldı (E=çap, F=1-10 MHz, ...).",75,6.12
+S2-R04,Sayfa2,4,RG6 *75,75,,BEL-1694A,Eşdeğer tip,Doğrulandı,"Eski satırda değerler frekansla azalıyor (1.45 -> 1.4); ilk sütun muhtemelen hatalı. 75 Ω tablo: başlık yok, değerler bir sütun kaymış varsayıldı (E=çap, F=1-10 MHz, ...).",75,6.96
+S2-R05,Sayfa2,5,RG11/U,75,,BEL-8261,Eşdeğer tip,Doğrulandı,"Eski değerler dolu PE RG-11/U'ya (Belden 8261) uyuyor; köpük PE RG-11 (Belden 9292) ayrıca eklendi ve daha düşük kayıplıdır. 75 Ω tablo: başlık yok, değerler bir sütun kaymış varsayıldı (E=çap, F=1-10 MHz, ...).",75,10.3
+S2-R06,Sayfa2,6,RG58 - RG58A - RG58B,53.5,,BEL-8259,Eşdeğer tip,Eşlendi (eski veri yok),"Satırda zayıflama değeri yok; Z0 53.5 Ω yazılmış (RG-58 ailesi 50-53.5 Ω). 75 Ω tablo: başlık yok, değerler bir sütun kaymış varsayıldı (E=çap, F=1-10 MHz, ...).",50,4.9

@@ -1,0 +1,88 @@
+table,column,description_tr,unit,kind
+cables,cable_id,Benzersiz kablo kimliği (ÜRETİCİ-PARÇA),,girdi
+cables,display_name,Görünen ad,,girdi
+cables,manufacturer,Üretici,,girdi
+cables,part_number,Üretici parça numarası,,girdi
+cables,family,Tip / aile (RG eşdeğeri vb.),,girdi
+cables,impedance_ohm,Karakteristik empedans,Ω,girdi
+cables,impedance_tol_ohm,Empedans toleransı (±),Ω,girdi
+cables,od_mm,Dış çap (kılıf üzeri),mm,girdi
+cables,inner_material,İç iletken malzemesi,,girdi
+cables,inner_construction,İç iletken yapısı,,girdi
+cables,inner_od_mm,İç iletken çapı,mm,girdi
+cables,dielectric_material,Dielektrik malzemesi,,girdi
+cables,dielectric_od_mm,Dielektrik çapı,mm,girdi
+cables,shield,Ekran yapısı,,girdi
+cables,braid_coverage_pct,Örgü kaplama oranı,%,girdi
+cables,jacket,Dış kılıf,,girdi
+cables,velocity_factor,Hız faktörü (VF),-,girdi
+cables,capacitance_pf_m,Kapasitans,pF/m,girdi
+cables,inductance_uh_m,Endüktans,µH/m,girdi
+cables,dcr_inner_ohm_km,İç iletken DC direnci,Ω/km,girdi
+cables,dcr_outer_ohm_km,Dış iletken (ekran) DC direnci,Ω/km,girdi
+cables,shielding_db,Ekranlama etkinliği (min.),dB,girdi
+cables,fmax_mhz,Üreticinin belirttiği maks. frekans,MHz,girdi
+cables,peak_power_kw,Tepe güç,kW,girdi
+cables,voltage_v,Gerilim değeri,V,girdi
+cables,voltage_note,Gerilim değerinin türü,,girdi
+cables,bend_radius_single_mm,Min. bükülme yarıçapı - tek/kurulum,mm,girdi
+cables,bend_radius_repeated_mm,Min. bükülme yarıçapı - tekrarlı,mm,girdi
+cables,weight_kg_km,Ağırlık,kg/km,girdi
+cables,tensile_kg,Maks. çekme kuvveti,kg,girdi
+cables,temp_min_c,Çalışma sıcaklığı min.,°C,girdi
+cables,temp_max_c,Çalışma sıcaklığı maks.,°C,girdi
+cables,outdoor_uv,Dış mekan / UV dayanımı,,girdi
+cables,direct_burial,Toprağa doğrudan gömme,,girdi
+cables,fire_class,Yangın sınıfı / onaylar,,girdi
+cables,connectors,Üreticinin listelediği konnektör aileleri,,girdi
+cables,k1_pub_db_100ft,"Üreticinin yayımladığı k1 (α=k1·√f+k2·f, dB/100ft)",dB/100ft,girdi
+cables,k2_pub_db_100ft,Üreticinin yayımladığı k2,dB/100ft,girdi
+cables,primary_source_id,Ana kaynak,,girdi
+cables,notes,Notlar,,girdi
+cables,att_n,Zayıflama noktası sayısı (formül),,formül
+cables,f_min_data,Datasheet verisinin en düşük frekansı (formül),MHz,formül
+cables,f_max_data,Datasheet verisinin en yüksek frekansı (formül),MHz,formül
+cables,k0_fit,"QA modeli sabit terim (α=k0+k1·√f+k2·f, dB/100m)",dB/100m,formül
+cables,k1_fit,QA modeli k1,dB/100m,formül
+cables,k2_fit,QA modeli k2,dB/100m,formül
+cables,fit_rms_pct,QA modeli ile datasheet arası RMS sapma,%,formül
+cables,pwr_n,Güç noktası sayısı (formül),,formül
+attenuation,point_id,Nokta kimliği,,girdi
+attenuation,cable_id,Cables.cable_id,,girdi
+attenuation,freq_mhz,Frekans,MHz,girdi
+attenuation,value,Datasheet'te yazan değer (olduğu gibi),unit sütunu,girdi
+attenuation,unit,Değerin birimi: dB/100m veya dB/100ft,,girdi
+attenuation,temp_c,Ölçüm/spesifikasyon sıcaklığı (belirtilmişse),°C,girdi
+attenuation,source_id,Sources.source_id,,girdi
+attenuation,source_ref,Belgedeki yer (tablo/sayfa),,girdi
+attenuation,att_db_100m,"Zayıflama, dB/100 m'ye çevrilmiş",dB/100m,formül
+attenuation,model_db_100m,QA modeli k0+k1√f+k2f değeri,dB/100m,formül
+attenuation,dev_pct,Model / datasheet - 1 (veri girişi kontrolü),%,formül
+attenuation,note,Not,,girdi
+power,power_id,Nokta kimliği,,girdi
+power,cable_id,Cables.cable_id,,girdi
+power,freq_mhz,Frekans,MHz,girdi
+power,value,Datasheet'te yazan ortalama (CW) güç,unit sütunu,girdi
+power,unit,W veya kW,,girdi
+power,ambient_temp_c,Güç değerinin ortam sıcaklığı,°C,girdi
+power,source_id,Sources.source_id,,girdi
+power,source_ref,Belgedeki yer,,girdi
+power,power_w,"Güç, W'a çevrilmiş",W,formül
+power,note,Not,,girdi
+sources,source_id,Kaynak kimliği,,girdi
+sources,publisher,Yayımlayan üretici,,girdi
+sources,document_title,Belge başlığı,,girdi
+sources,part_number,Parça no,,girdi
+sources,revision,Revizyon,,girdi
+sources,document_date,Belge tarihi,,girdi
+sources,host,Belgeyi barındıran (üretici / distribütör kopyası),,girdi
+sources,url,İndirme adresi,,girdi
+sources,accessed,Erişim tarihi,,girdi
+sources,local_file,Proje klasöründeki arşiv kopyası,,girdi
+sources,notes,Not,,girdi
+ham_bands,cable_id,cables.cable_id,,formül
+ham_bands,band,Amatör bandı,,formül
+ham_bands,freq_mhz,Bant temsil frekansı,MHz,formül
+ham_bands,att_db_100m,Zayıflama (log-log interpolasyon),dB/100m,formül
+ham_bands,att_db_100ft,Zayıflama,dB/100ft,formül
+ham_bands,extrapolated,1 = datasheet frekans aralığı dışında,,formül

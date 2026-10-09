@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+
+# Excel kilit/geçici dosyaları
+~$*.xlsx
+
+# Üretici datasheet PDF'leri üçüncü tarafların telifli belgeleridir - yayımlanmaz.
+# Adresleri Sources tablosunda ve kaynaklar/README.md'de; yerel kopyalar kullanıcıda kalır.
+kaynaklar/*.pdf
+
+# Orijinal eski tablo (kişisel üst veri içerir); temizlenmiş kopyası data/legacy/ altında
+/TA3HRJ - Coaxial_Cable_Attenuation_Chart.xlsx
+
+# Claude Code kisisel yerel ayarlari - paylasilmaz
+.claude/settings.local.json
+.claude/launch.json

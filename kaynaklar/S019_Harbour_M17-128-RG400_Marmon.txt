@@ -1,0 +1,35 @@
+Kaynak S019 - üretici ürün sayfası (Marmon Aerospace & Defense / Harbour Industries)
+URL    : https://marmon-ad.com/products/wire-cable/rf-cable/m17-series/m17-128-rg400
+Erişim : 2026-10-09
+Ürün   : M17/128-RG400 (Harbour Industries), MIL-DTL-17 type IX
+
+YAPI
+Dış çap          : 0.195 in | 5.0 mm
+İç iletken       : Örgülü gümüş kaplı bakır, Ø 0.038 in | 1.0 mm
+Dielektrik       : PTFE, Ø 0.116 in | 2.9 mm
+İç ekran         : Gümüş kaplı bakır örgü, Ø 0.136 in | 3.5 mm
+Dış ekran        : Gümüş kaplı bakır örgü, Ø 0.156 in | 4.0 mm
+Kılıf            : Yarı saydam kahverengi FEP, kalınlık 0.020 in | 0.5 mm
+
+ELEKTRİKSEL / FİZİKSEL
+Empedans         : 50 ± 2 Ω
+Yayılma hızı     : %70
+Kapasite         : 29.4 pF/ft | 96.5 pF/m
+Maks. gerilim    : 1900 V
+Maks. frekans    : 12.4 GHz
+Ekranlama        : -80 dB
+Ağırlık          : 50.0 lb/kft | 74.4 kg/km
+Min. bükülme     : 1.00 in | 25.4 mm
+Çalışma sıcaklığı: -55 ... +200 °C
+
+ZAYIFLAMA (TİPİK, dB/100 ft)
+  100 MHz  4.1
+  400 MHz  8.6
+    1 GHz 14.2
+    2 GHz 21.2
+  2.4 GHz 23.6
+    3 GHz 27.0
+    5 GHz 37.0
+   10 GHz 57.8
+ 12.4 GHz 66.7
+Güç tablosu sayfada yok.

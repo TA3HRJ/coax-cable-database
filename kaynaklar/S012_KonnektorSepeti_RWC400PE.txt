@@ -1,0 +1,48 @@
+Kaynak S012 - satıcı ürün sayfası (üretici datasheet'i DEĞİL)
+URL      : https://www.konnektorsepeti.com/hazir-kablo/n-n-kablo/n-erkek-n-erkek-koaksiyel-kablo-lmr400-rwc400
+Erişim   : 2026-10-09
+Ürün     : N erkek - N erkek Koaksiyel Kablo LMR400/RWC400
+Stok kodu: AUNN-155-RWC400
+Kablo    : Düşük Kayıplı RWC400PE Bakır 50 ohm
+Üretici  : Sayfada belirtilmemiş. PDF datasheet bağlantısı yok.
+
+KABLO YAPISI
+İletken  : Elektrolitik bakır tel, Ø 2,70 mm, Class 1, IEC 60228
+İzolasyon: Fiziksel köpüklü PE, Ø 7,20 mm, 70°C, EN 50290-2-23
+Ekran    : Al-Pet-Al folyo min. %100 kapama + kalaylı bakır tel örgü %85 kapama
+Kılıf    : PVC  - RAL 9011 siyah, Ø 10,2 mm, TM51 70°C, EN 50290-2-22
+           LLDPE - RAL 9011 siyah, Ø 10,2 mm, 80°C, EN 50290-2-24
+           HFFR - RAL 9011 siyah, Ø 10,2 mm, 70°C, EN 50290-2-27
+
+TEKNİK ÖZELLİKLER
+Çalışma sıcaklığı   : -30 °C ... +70 °C
+Bükülme yarıçapı min: 10 x D
+Empedans            : 50 ± 2 Ω
+Kapasite            : 78,5 ± 2 pF/m
+Yayılma hızı        : %85 ± 2
+Yalıtım direnci min.: 2 GΩ x km
+Çalışma gerilimi max: 2000 V
+Test gerilimi       : 5000 V
+Standartlar         : EN 50117, IEC 61196
+Yangın performansı  : Düşey alev yayılma EN 60332-1-2 (PVC-HFFR)
+                      Korozif gaz EN 50267-2-1/2 (HFFR)
+                      Duman yoğunluğu EN 61034-2 (HFFR)
+
+Zayıflama @20 °C MAKSİMUM (dB/100 m)
+   30 MHz  2,38
+   50 MHz  3,01
+  150 MHz  5,10
+  220 MHz  6,18
+  450 MHz  8,96
+  900 MHz 13,02
+ 1500 MHz 17,33
+ 1800 MHz 19,24
+ 2000 MHz 20,45
+ 2500 MHz 23,30
+ 5800 MHz 38,92
+
+Geri dönüş kaybı : 30-1000 MHz > 23 dB; 1000-3000 MHz > 20 dB
+Ekran zayıflaması: 30-3000 MHz >= 90 dB
+
+Kullanım (satıcı metni): PE kılıf açık hava ve yeraltı uygulamalarında, HFFR halojensiz kılıf yangın
+şartlarından etkilenmemesi gereken yerlerde tercih edilir. Genellikle BNC, TNC, SMA ve N konnektörlerle sonlandırılır.
