@@ -1,5 +1,22 @@
 # Devir notu
 
+## 2026-10-09 — M5 tamam: site yayında (https://ta3hrj.github.io/coax-cable-database/)
+
+- PWA: `site/manifest.json`, `site/sw.js` (ağ öncelikli + önbellek yedekli, kurulumda 19 dosya önbelleğe), PNG simgeler
+  (`scripts/make_icons.py`, maskable dahil), içeriğe geç bağlantısı (JS ile; `#view` hash yönlendirmeyi bozardı),
+  rota değişince odak `main`'e, noscript.
+- Test: `sw.js` PRECACHE listesi `site/` altındaki her js/css/json/html dosyasını kapsamalı (yeni sayfa eklerken unutma).
+- Kullanıcı onayıyla Pages açıldı (`build_type=workflow`); `.github/workflows/pages.yml` yalnızca `site/`'ı yayımlar,
+  yayından önce testler + public-text çalışır. Repo homepage ayarlandı. `docs/` yayında 404 (doğrulandı).
+- Yayında doğrulandı: service worker `activated`, önbellek 19 dosya, tüm rotalar çalışıyor, konsol hatası yok.
+
+**Tuzaklar**
+- Uygulamanın gömülü tarayıcısında `localhost` üzerinde service worker kaydı "unknown error" ile başarısız olur
+  (ortam kısıtı); mantık sayfa içinde sahte `self` ile, gerçek kayıt yayındaki HTTPS sitede doğrulandı.
+- `sw.js` önbellek sürümü `CACHE_VERSION`; PRECACHE yapısı değişirse artır.
+
+**Sıradaki (M6, isteğe bağlı):** hatalı veri / yeni kablo için issue şablonları; profil README'ye proje bağlantısı.
+
 ## 2026-10-09 — M4 tamam (Karşılaştır, Tümü, Kablo detayı, Yöntem)
 
 - `site/js/chart.js`: kütüphanesiz log-log SVG grafik; dataviz referans paletinin 8 kategorik slotu (açık/koyu ayrı,

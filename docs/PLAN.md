@@ -1,6 +1,6 @@
 # Web arayüzü planı
 
-Durum: M1–M4 tamam, sıradaki M5 (PWA, cila, GitHub Pages) · 2026-10-09
+Durum: M1–M5 tamam, site yayında: https://ta3hrj.github.io/coax-cable-database/ · sıradaki M6 (geri bildirim yolu) · 2026-10-09
 Hedef: veritabanını sade, hızlı ve anlaşılır bir web sitesine dönüştürmek. Site, telsizcinin
 "hangi kabloyu almalıyım, şu uzunlukta ne kadar kaybederim?" sorusuna birkaç tıkla cevap vermeli.
 
@@ -136,7 +136,7 @@ Veritabanındaki güncel değerler (dB/100 m), kartlarda gösterilecek bilgiye �
 | M2 | Site iskeleti, gezinme, tema, dil, **Popüler** sayfası | `site/` (tamam; Pages henüz açılmadı) |
 | M3 | **Hesaplayıcı** (+ paylaşılabilir URL) | `site/js/pages/calc.js` (tamam) |
 | M4 | **Karşılaştır**, **Tümü**, **Kablo detayı**, **Yöntem** | `site/js/pages/*.js`, `site/js/chart.js` (tamam) |
-| M5 | PWA, erişilebilirlik ve mobil cilası, GitHub Pages'i aç, repo homepage | `ta3hrj.github.io/coax-cable-database` |
+| M5 | PWA, erişilebilirlik ve mobil cilası, GitHub Pages'i aç, repo homepage | `ta3hrj.github.io/coax-cable-database` (tamam) |
 | M6 | Geri bildirim yolu: hatalı veri ve yeni kablo için issue şablonu | `.github/ISSUE_TEMPLATE/` |
 
 Her aşama ayrı commit/PR; M2 sonrası site kullanılabilir durumda olur.

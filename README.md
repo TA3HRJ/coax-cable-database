@@ -2,8 +2,21 @@
 
 A referenced, formula-driven attenuation and specification database for 65 coaxial cables used in amateur radio —
 every value traced to a manufacturer datasheet.
-A static web interface lives in `site/` (popular cables, calculator, comparison, catalogue, cable details, method);
-its calculation is tested against the Excel workbook. Publishing on GitHub Pages is the next step (see [docs/PLAN.md](docs/PLAN.md)).
+Live site: **https://ta3hrj.github.io/coax-cable-database/**
+
+---
+
+## Web site
+
+- **Popular** — the most often recommended cables by size class; pick a band and a length, every card updates
+- **Calculate** — loss, power at the antenna, SWR at the transmitter, power rating and wavelength for any cable,
+  frequency, length, power and antenna SWR; the link in the address bar shares the settings
+- **Compare** — up to 8 cables on one log-log chart plus a table at your frequency, length, power and SWR
+- **All cables** — searchable, filterable, sortable catalogue; each cable has a details page with its datasheet
+  points and sources
+- TR / EN (follows the browser language), light / dark theme, installable, works offline after the first visit
+- No backend, no login; served from `site/` by GitHub Pages. The calculation is tested against the Excel workbook
+  on every push
 
 ---
 
@@ -24,7 +37,7 @@ its calculation is tested against the Excel workbook. Publishing on GitHub Pages
 
 ```
 TA3HX_Coax_Database.xlsx       # master workbook (Excel) - Ham_Bands, Calculator, Graph, data tables
-site/                           # static web site (GitHub Pages)
+site/                           # static web site (published to GitHub Pages)
 ├── data/cables.min.json        # compact data the site loads (generated)
 ├── js/coax.js                  # calculation core (same method as the workbook, no DOM)
 docs/
