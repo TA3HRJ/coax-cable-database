@@ -2,6 +2,7 @@
 // URL: #/calc?c=ID&f=MHz&L=m&u=ft&P=W&s=SWR
 import { t, lang, fmt, fmtPct } from "../i18n.js";
 import * as coax from "../coax.js";
+import { fmtMm, classLabel } from "../util.js";
 
 const FT = coax.FT_PER_M;
 
@@ -156,7 +157,7 @@ export function renderCalc(view, ctx) {
 
     const src = db.src[c.src];
     const foot = el("div", "result-foot");
-    foot.innerHTML = `<b>${esc(c.n)}</b> · ${esc(lang === "tr" ? classLabel(c).tr : classLabel(c).en)} · ${fmt(c.od, 1)} mm` +
+    foot.innerHTML = `<b>${esc(c.n)}</b> · ${esc(classLabel(db, c, st.u))} · ${fmtMm(c.od, st.u)}` +
       (src && src.u ? ` · <a href="${esc(src.u)}" target="_blank" rel="noopener" title="${esc(src.p + " — " + src.t)}">${t("source")} ↗</a>` : "");
     box.append(hero, bar, alerts, dl, foot);
     return box;
@@ -189,10 +190,6 @@ export function renderCalc(view, ctx) {
   function indicators(c) {
     return (c.val === "max" ? `<sup class="ind" title="${esc(t("ind_max_title"))}">${t("ind_max")}</sup>` : "") +
       (coax.isExtrapolated(c, st.f) ? `<sup class="ind est" title="${esc(t("ind_est_title"))}">~</sup>` : "");
-  }
-
-  function classLabel(c) {
-    return db.classes.find((k) => k.k === c.cls);
   }
 
   function optgroup(label, list) {

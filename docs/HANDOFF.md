@@ -17,6 +17,8 @@
 
 **M6 tamam:** `.github/ISSUE_TEMPLATE/` (data-correction, new-cable, config; etiketler `data`, `new cable`); yöntem sayfasında issue bağlantısı, kablo sayfasında kabloyu önceden dolduran "hatalı değer bildir" bağlantısı (SW cache v2); profil README (TA3HRJ/TA3HRJ) Projects tablosuna satır eklendi. Planlanmış iş kalmadı.
 
+**Sonra (kullanıcı isteği):** ft birimi seçiliyken Popüler kartlarda ve Hesapla alt satırında çap, sınıf etiketi ve bükülme yarıçapı inç gösterilir (`util.js` `fmtMm`, `sizeClassLabel`; veri mm kalır, dönüşüm yalnızca görünümde). Birim değişince kartların çap/bükülme kısmı `paintDims` ile yeniden yazılır; Popüler → Hesapla bağlantısı `u=ft` taşır. Kablo detayı ve Tümü sayfalarında birim seçici yok, orada mm kalıyor. SW cache v3.
+
 ## 2026-10-09 — M4 tamam (Karşılaştır, Tümü, Kablo detayı, Yöntem)
 
 - `site/js/chart.js`: kütüphanesiz log-log SVG grafik; dataviz referans paletinin 8 kategorik slotu (açık/koyu ayrı,

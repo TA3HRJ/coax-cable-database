@@ -45,9 +45,25 @@ export function indicators(c, f) {
     (f != null && coax.isExtrapolated(c, f) ? `<sup class="ind est" title="${esc(t("ind_est_title"))}">~</sup>` : "");
 }
 
-export function classLabel(db, c) {
-  const k = db.classes.find((x) => x.k === c.cls);
-  return k ? (lang === "tr" ? k.tr : k.en) : "";
+export const MM_PER_IN = 25.4;
+
+/** Uzunluk (mm); ft biriminde inç (inçte varsayılan olarak iki basamak fazla). */
+export function fmtMm(mm, u, d = 1, di = d + 2) {
+  return u === "ft" ? `${fmt(mm / MM_PER_IN, di)} in` : `${fmt(mm, d)} mm`;
+}
+
+/** Çap sınıfı etiketi; ft biriminde "(~5 mm)" -> "(~0,20 in)", "7 mm sınıfı" -> "7 mm sınıfı (~0,28 in)". */
+export function sizeClassLabel(k, u) {
+  if (!k) return "";
+  const s = lang === "tr" ? k.tr : k.en;
+  if (u !== "ft") return s;
+  const inch = (v) => fmt(parseFloat(v.replace(",", ".")) / MM_PER_IN, 2);
+  return s.replace(/~(\d+(?:[.,]\d+)?) mm/, (_, v) => `~${inch(v)} in`)
+    .replace(/^(\d+(?:[.,]\d+)?) mm (sınıfı|class)$/, (m, v) => `${m} (~${inch(v)} in)`);
+}
+
+export function classLabel(db, c, u) {
+  return sizeClassLabel(db.classes.find((x) => x.k === c.cls), u);
 }
 
 /** Kablo seçme listesi: sık önerilenler başta, sonra sınıflar. */

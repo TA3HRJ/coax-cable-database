@@ -2,6 +2,7 @@
 // Bant, uzunluk ve birim değişince kartlar yeniden kurulmaz, yalnızca değerleri güncellenir.
 import { t, lang, fmt } from "../i18n.js";
 import * as coax from "../coax.js";
+import { fmtMm, sizeClassLabel } from "../util.js";
 
 const FT = coax.FT_PER_M;
 
@@ -73,6 +74,7 @@ export function renderPopular(view, ctx) {
       st.u = u;
       seg.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
       setLenInputs();
+      groups.forEach((g) => g.cards.forEach(paintDims));
       update();
     });
     seg.append(b);
@@ -115,10 +117,7 @@ export function renderPopular(view, ctx) {
 
   function card(c) {
     const root = el("article", "card" + (c.std ? " is-std" : ""));
-    const k = classOf[c.cls];
     const cls = el("div", "c-class");
-    cls.innerHTML = `<span>${esc(lang === "tr" ? k.tr : k.en)} · ${fmt(c.od, 1)} mm</span>` +
-      (c.std ? `<span class="tag" title="${esc(t("std_title"))}">${t("standard")}</span>` : "");
     const title = el("a", "c-title");
     title.textContent = c.s;
     title.href = `#/cable/${encodeURIComponent(c.id)}`;
@@ -131,16 +130,6 @@ export function renderPopular(view, ctx) {
     bar.append(fill);
     const line = el("div", "c-line");
     const meta = el("div", "c-meta");
-    const m = [];
-    if (c.vf) m.push(`${t("vf")} ${fmt(c.vf, 2)}`);
-    if (c.pk) m.push(`${fmt(c.pk, c.pk < 10 ? 1 : 0)} kW ${t("peak")}`);
-    // Bükülme: tekrarlı değer varsa o (pratikte önemli olan), yoksa tek seferlik değer açık etiketle.
-    // Üreticiler iki ayrı değer yayımlar; tek seferlik/kurulum değeri LMR ve süper esnek tiplerde çapın ~2,5 katı olabilir.
-    if (c.br2) m.push([`${t("bend_rep")} ${fmt(c.br2, 0)} mm`, t("bend_rep_title")]);
-    else if (c.br1 && /^Times/.test(c.m)) m.push([`${t("bend_once")} ${fmt(c.br1, 0)} mm`, t("bend_once_title")]);
-    else if (c.br1) m.push([`${t("bend_min")} ${fmt(c.br1, 0)} mm`, t("bend_min_title")]);
-    if (c.bur && /evet|uygun/i.test(c.bur)) m.push(t("burial"));
-    meta.innerHTML = m.map((x) => Array.isArray(x) ? `<span title="${esc(x[1])}">${esc(x[0])}</span>` : `<span>${esc(x)}</span>`).join("");
 
     const actions = el("div", "c-actions");
     const calc = Object.assign(el("a", "btn primary"), { textContent: `${t("calc")} →` });
@@ -157,7 +146,26 @@ export function renderPopular(view, ctx) {
       actions.append(a);
     }
     root.append(cls, title, sub, value, bar, line, meta, actions);
-    return { c, root, value, fill, bar, line, calc };
+    const x = { c, root, cls, meta, value, fill, bar, line, calc };
+    paintDims(x);
+    return x;
+  }
+
+  /** Çap ve bükülme: m biriminde mm, ft biriminde inç. Yalnızca birim değişince yeniden yazılır. */
+  function paintDims(x) {
+    const { c, cls, meta } = x;
+    cls.innerHTML = `<span>${esc(sizeClassLabel(classOf[c.cls], st.u))} · ${fmtMm(c.od, st.u)}</span>` +
+      (c.std ? `<span class="tag" title="${esc(t("std_title"))}">${t("standard")}</span>` : "");
+    const m = [];
+    if (c.vf) m.push(`${t("vf")} ${fmt(c.vf, 2)}`);
+    if (c.pk) m.push(`${fmt(c.pk, c.pk < 10 ? 1 : 0)} kW ${t("peak")}`);
+    // Bükülme: tekrarlı değer varsa o (pratikte önemli olan), yoksa tek seferlik değer açık etiketle.
+    // Üreticiler iki ayrı değer yayımlar; tek seferlik/kurulum değeri LMR ve süper esnek tiplerde çapın ~2,5 katı olabilir.
+    if (c.br2) m.push([`${t("bend_rep")} ${fmtMm(c.br2, st.u, 0, 1)}`, t("bend_rep_title")]);
+    else if (c.br1 && /^Times/.test(c.m)) m.push([`${t("bend_once")} ${fmtMm(c.br1, st.u, 0, 1)}`, t("bend_once_title")]);
+    else if (c.br1) m.push([`${t("bend_min")} ${fmtMm(c.br1, st.u, 0, 1)}`, t("bend_min_title")]);
+    if (c.bur && /evet|uygun/i.test(c.bur)) m.push(t("burial"));
+    meta.innerHTML = m.map((x) => Array.isArray(x) ? `<span title="${esc(x[1])}">${esc(x[0])}</span>` : `<span>${esc(x)}</span>`).join("");
   }
 
   function update() {
@@ -177,7 +185,7 @@ export function renderPopular(view, ctx) {
 
   function paint(x, att, max) {
     const { c } = x;
-    x.calc.href = `#/calc?c=${encodeURIComponent(c.id)}&f=${st.f}&L=${round(st.L, 2)}`;
+    x.calc.href = `#/calc?c=${encodeURIComponent(c.id)}&f=${st.f}&L=${round(st.L, 2)}${st.u === "ft" ? "&u=ft" : ""}`;
     if (att == null) {
       x.value.className = "c-value na";
       x.value.innerHTML = `<span class="v">${t("no_data")}</span>`;
