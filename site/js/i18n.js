@@ -45,10 +45,49 @@ export const STRINGS = {
     info_z: (z) => `Bu kablonun empedansı ${z} Ω; 50 Ω sistemde ek uyumsuzluk kaybı oluşur.`,
     alts_title: "Aynı koşulda aynı sınıf", alts_lead: "Aynı frekans, uzunluk, güç ve SWR ile; toplam kayba göre. Seçmek için tıklayın.",
     calc_note: "Toplam kayıp ARRL Antenna Book uyumsuz hat formülüyle hesaplanır: TL = 10·log10[(a² − |Γ|²) / (a·(1 − |Γ|²))], a = 10^(ML/10). Güç sınırı datasheet'in ortam sıcaklığı (çoğunlukla 40 °C) ve uyumlu yük içindir; SWR ve sıcaklık sınırı düşürür. Konnektör kayıpları dahil değildir.",
-    soon_title: "Bu sayfa hazırlanıyor",
-    soon_calc: "Hesaplayıcı bir sonraki sürümde gelecek.",
-    soon_compare: "Karşılaştırma sayfası yakında. Seçtiğiniz kablolar hatırlanıyor:",
-    soon_all: "Tüm kabloların aranabilir listesi yakında.",
+    cmp_title: "Kablo karşılaştırma",
+    cmp_lead: "En fazla 8 kablo seçin. Grafik tüm frekanslarda zayıflamayı, tablo seçtiğiniz frekans, uzunluk, güç ve SWR'de sonucu gösterir.",
+    remove: "Çıkar", add_cable: "Kablo ekle", max_series: (n) => `En fazla ${n} kablo karşılaştırılabilir.`,
+    cmp_chart: "Zayıflama – frekans (log-log)",
+    cmp_table: (f, L, P, s) => `${f} · ${L} m · ${P} W · SWR ${s}`,
+    vs_best: "En iyiye göre fark",
+    all_title: "Tüm kablolar", all_lead: (n) => `${n} kablo. Arayın, süzün, sütun başlığına tıklayarak sıralayın; ayrıntı için kablo adına tıklayın.`,
+    search_ph: "Ara: RG-213, LMR, Ecoflex, Belden…", all_z: "Tüm empedanslar", all_classes: "Tüm sınıflar", all_mfrs: "Tüm üreticiler",
+    n_cables: (n) => `${n} kablo`, manufacturer: "Üretici", od: "Çap (mm)", peak_kw: "Tepe (kW)", class: "Sınıf",
+    no_match: "Aramaya uyan kablo yok.",
+    not_found: "Kablo bulunamadı.", max_values: "maksimum değerler",
+    bands_title: "Amatör bantlarında zayıflama", bands_note: "~ = datasheet aralığı dışında tahmini; – = veri yok",
+    curve_title: "Zayıflama eğrisi ve datasheet noktaları",
+    curve_note: (n, a, b) => `Noktalar: datasheet'in yayımladığı ${n} değer (${a} – ${b}). Çizgi: noktalar arasında log-log interpolasyon; aralığın yarısından iki katına kadar çizilir.`,
+    specs_title: "Özellikler", notes: "Notlar", data_lang_note: "",
+    points_title: "Datasheet değerleri", power_points: "Ortalama güç sınırı (datasheet)",
+    sources_title: "Kaynaklar", qa_note: (r) => `Kalite kontrolü: noktaların k0+k1·√f+k2·f modelinden ortalama sapması %${r}.`,
+    similar_title: "Aynı sınıftaki diğer kablolar", similar_note: "2 m bandında (144 MHz) dB/100 m, en az kayıplıdan başlayarak.",
+    f_manufacturer: "Üretici", f_part_number: "Parça no", f_family: "Tip / aile", f_impedance: "Empedans", f_od: "Dış çap",
+    f_velocity_factor: "Hız faktörü (VF)", f_capacitance: "Kapasitans", f_inductance: "Endüktans", f_inner_material: "İç iletken",
+    f_inner_construction: "İç iletken yapısı", f_inner_od: "İç iletken çapı", f_dielectric: "Dielektrik", f_dielectric_od: "Dielektrik çapı",
+    f_shield: "Ekran", f_braid_coverage: "Örgü kaplama", f_jacket: "Kılıf", f_shielding: "Ekranlama etkinliği",
+    f_dcr_inner: "DC direnç (iç)", f_dcr_outer: "DC direnç (dış)", f_fmax: "Maks. frekans", f_peak_power: "Tepe güç", f_voltage: "Gerilim",
+    f_bend_single: "En küçük bükülme (tek sefer / genel)", f_bend_repeated: "En küçük bükülme (tekrarlı)", f_weight: "Ağırlık",
+    f_tensile: "Çekme kuvveti", f_temperature: "Çalışma sıcaklığı", f_outdoor: "Dış mekan / UV", f_burial: "Toprağa gömme",
+    f_fire: "Yangın / onaylar", f_connectors: "Konnektörler", f_k_published: "Üreticinin k1/k2 katsayıları",
+    method_title: "Yöntem ve kaynaklar", method_lead: "Değerlerin nereden geldiği ve nasıl hesaplandığı.",
+    method_body: `<h2>Zayıflama nasıl hesaplanıyor?</h2>
+<p>Her kablonun datasheet'inde yayımlanan zayıflama noktaları olduğu gibi saklanır. Herhangi bir frekanstaki değer, o frekansın iki yanındaki noktalar arasında <b>ln(α)–ln(f) düzleminde doğrusal interpolasyonla</b> bulunur. Datasheet frekanslarında sonuç datasheet ile birebir aynıdır.</p>
+<p>Datasheet aralığının dışında uçtaki iki noktanın eğimi kullanılır (α ∝ f<sup>n</sup>). Bu değerler <sup class="ind est">~</sup> ile işaretlenir; en yüksek veri frekansının iki katından ötesi gösterilmez.</p>
+<p>Fiziksel model <b>α(f) = k0 + k1·√f + k2·f</b> (k1·√f iletken, k2·f dielektrik kaybı) yalnızca veri girişini denetlemek için kullanılır; ince ve köpük dielektrikli kablolarda HF'de iki terimli model %20–30 sapabildiği için ana hesap interpolasyondur.</p>
+<h2>SWR'li kayıp ve güç</h2>
+<p>Toplam kayıp ARRL Antenna Book uyumsuz hat formülüyle hesaplanır: TL = 10·log10[(a² − |Γ|²) / (a·(1 − |Γ|²))], a = 10<sup>ML/10</sup>, |Γ| = (SWR−1)/(SWR+1). Ortalama güç sınırı datasheet'in güç noktaları arasında aynı log-log interpolasyonla bulunur; çoğunlukla 40 °C ortam ve uyumlu yük içindir.</p>
+<h2>Değer türleri</h2>
+<p>Çoğu üretici nominal/tipik değer yayımlar. Reçber ve Ericsson <b>maksimum</b> değer verir; bu kablolar diğerleriyle yan yana gösterilir ve <sup class="ind">maks</sup> ile işaretlenir. Belden H155/H1000'de maksimum nominalin %10 üstüdür; CommScope ±%5 garanti verir. Konnektör ve eklem kayıpları dahil değildir.</p>
+<p>Bükülme yarıçapında üreticiler iki değer verir: <b>tek sefer</b> (kurulum; LMR ve süper esnek tiplerde çapın ~2,5 katı) ve <b>tekrarlı</b> (çapın ~10 katı). Kartlarda tekrarlı değer öncelikli gösterilir.</p>
+<h2>Doğrulama</h2>
+<p>Sitedeki hesap, Excel çalışma kitabının hesapladığı değerlerle her değişiklikte otomatik olarak karşılaştırılır (tüm kablolar × 12 bant, hesaplayıcı ve karşılaştırma tablosu).</p>`,
+    all_sources: (n) => `Kaynak belgeler (${n})`,
+    data_body: `<h2>Veri ve lisans</h2>
+<p>Veritabanı Excel çalışma kitabı, SQLite ve CSV olarak <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>'da indirilebilir. Derlenmiş veri CC BY 4.0, kod MIT lisanslıdır. Üretici datasheet'leri sahiplerine aittir ve burada yeniden dağıtılmaz; yalnızca başlık ve adresleri listelenir.</p>
+<p>Hatalı bir değer ya da eksik bir kablo görürseniz GitHub'da bir issue açabilirsiniz.</p>`,
+    foot_method: "Yöntem ve kaynaklar",
     none_selected: "henüz kablo seçilmedi",
     foot: (v, n, s) => `Veri sürümü ${v} · ${n} kablo · ${s} kaynak belge`,
     foot_license: "Kod MIT · veri CC BY 4.0",
@@ -97,10 +136,49 @@ export const STRINGS = {
     info_z: (z) => `This cable is ${z} Ω; in a 50 Ω system there is additional mismatch loss.`,
     alts_title: "Same class, same conditions", alts_lead: "Same frequency, length, power and SWR, ranked by total loss. Click to select.",
     calc_note: "Total loss uses the ARRL Antenna Book mismatched-line formula: TL = 10·log10[(a² − |Γ|²) / (a·(1 − |Γ|²))], a = 10^(ML/10). Power ratings are for the datasheet's ambient temperature (mostly 40 °C) and a matched load; SWR and heat lower them. Connector losses are not included.",
-    soon_title: "This page is in progress",
-    soon_calc: "The calculator arrives in the next release.",
-    soon_compare: "The comparison page is coming soon. Your selection is remembered:",
-    soon_all: "A searchable list of all cables is coming soon.",
+    cmp_title: "Compare cables",
+    cmp_lead: "Pick up to 8 cables. The chart shows attenuation at every frequency; the table shows the result at your frequency, length, power and SWR.",
+    remove: "Remove", add_cable: "Add a cable", max_series: (n) => `Up to ${n} cables can be compared.`,
+    cmp_chart: "Attenuation vs. frequency (log-log)",
+    cmp_table: (f, L, P, s) => `${f} · ${L} m · ${P} W · SWR ${s}`,
+    vs_best: "vs. best",
+    all_title: "All cables", all_lead: (n) => `${n} cables. Search, filter, click a column header to sort; click a cable name for details.`,
+    search_ph: "Search: RG-213, LMR, Ecoflex, Belden…", all_z: "All impedances", all_classes: "All classes", all_mfrs: "All manufacturers",
+    n_cables: (n) => `${n} cables`, manufacturer: "Manufacturer", od: "OD (mm)", peak_kw: "Peak (kW)", class: "Class",
+    no_match: "No cable matches.",
+    not_found: "Cable not found.", max_values: "maximum values",
+    bands_title: "Attenuation on the amateur bands", bands_note: "~ = estimated outside the datasheet range; – = no data",
+    curve_title: "Attenuation curve and datasheet points",
+    curve_note: (n, a, b) => `Points: the ${n} values the datasheet publishes (${a} – ${b}). Line: log-log interpolation between them, drawn from half to twice the data range.`,
+    specs_title: "Specifications", notes: "Notes", data_lang_note: "Text fields of the data are in Turkish.",
+    points_title: "Datasheet values", power_points: "Average power rating (datasheet)",
+    sources_title: "Sources", qa_note: (r) => `Quality check: the points deviate ${r}% on average from a k0+k1·√f+k2·f fit.`,
+    similar_title: "Other cables in the same class", similar_note: "dB/100 m on 2 m (144 MHz), lowest loss first.",
+    f_manufacturer: "Manufacturer", f_part_number: "Part number", f_family: "Type / family", f_impedance: "Impedance", f_od: "Outer diameter",
+    f_velocity_factor: "Velocity factor", f_capacitance: "Capacitance", f_inductance: "Inductance", f_inner_material: "Center conductor",
+    f_inner_construction: "Center conductor construction", f_inner_od: "Center conductor diameter", f_dielectric: "Dielectric", f_dielectric_od: "Dielectric diameter",
+    f_shield: "Shield", f_braid_coverage: "Braid coverage", f_jacket: "Jacket", f_shielding: "Shielding effectiveness",
+    f_dcr_inner: "DC resistance (inner)", f_dcr_outer: "DC resistance (outer)", f_fmax: "Max. frequency", f_peak_power: "Peak power", f_voltage: "Voltage",
+    f_bend_single: "Min. bend radius (one-time / general)", f_bend_repeated: "Min. bend radius (repeated)", f_weight: "Weight",
+    f_tensile: "Pull strength", f_temperature: "Operating temperature", f_outdoor: "Outdoor / UV", f_burial: "Direct burial",
+    f_fire: "Fire / approvals", f_connectors: "Connectors", f_k_published: "Manufacturer's k1/k2",
+    method_title: "Method and sources", method_lead: "Where the values come from and how they are calculated.",
+    method_body: `<h2>How attenuation is calculated</h2>
+<p>The attenuation points published in each datasheet are stored as published. The value at any frequency is found by <b>linear interpolation in the ln(α)–ln(f) plane</b> between the two neighbouring points, so results at datasheet frequencies match the datasheet exactly.</p>
+<p>Outside the datasheet range the slope of the two outermost points is used (α ∝ f<sup>n</sup>). Such values are marked <sup class="ind est">~</sup>; nothing beyond twice the highest data frequency is shown.</p>
+<p>The physical model <b>α(f) = k0 + k1·√f + k2·f</b> (k1·√f conductor, k2·f dielectric loss) is used only to check data entry; for thin and foam-dielectric cables a two-term model can be off by 20–30% at HF, so interpolation is the main method.</p>
+<h2>Loss with SWR, and power</h2>
+<p>Total loss uses the ARRL Antenna Book mismatched-line formula: TL = 10·log10[(a² − |Γ|²) / (a·(1 − |Γ|²))], a = 10<sup>ML/10</sup>, |Γ| = (SWR−1)/(SWR+1). The average power rating is interpolated the same way between the datasheet's power points; it mostly assumes 40 °C ambient and a matched load.</p>
+<h2>Value types</h2>
+<p>Most manufacturers publish nominal/typical values. Reçber and Ericsson publish <b>maximum</b> values; these cables are shown side by side with the others and marked <sup class="ind">max</sup>. Belden H155/H1000 maxima are nominal +10%; CommScope guarantees ±5%. Connector and splice losses are not included.</p>
+<p>For bend radius, manufacturers give two values: <b>one-time</b> (installation; about 2.5× the diameter for LMR and superflexible types) and <b>repeated</b> (about 10×). Cards show the repeated value first.</p>
+<h2>Verification</h2>
+<p>The site's calculation is compared automatically with the values the Excel workbook calculates on every change (all cables × 12 bands, the calculator and the comparison table).</p>`,
+    all_sources: (n) => `Source documents (${n})`,
+    data_body: `<h2>Data and license</h2>
+<p>The database can be downloaded from <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a> as an Excel workbook, SQLite and CSV. The compiled data is CC BY 4.0, the code MIT. Manufacturer datasheets belong to their owners and are not redistributed here; only their titles and URLs are listed.</p>
+<p>If you spot a wrong value or a missing cable, please open an issue on GitHub.</p>`,
+    foot_method: "Method and sources",
     none_selected: "no cables selected yet",
     foot: (v, n, s) => `Data version ${v} · ${n} cables · ${s} source documents`,
     foot_license: "Code MIT · data CC BY 4.0",
@@ -125,6 +203,14 @@ export function fmt(x, digits = 1) {
   if (x == null || !isFinite(x)) return "–";
   return new Intl.NumberFormat(lang === "tr" ? "tr-TR" : "en-US", {
     minimumFractionDigits: digits, maximumFractionDigits: digits,
+  }).format(x);
+}
+
+/** Yüzde: Türkçe "%55,3", İngilizce "55.3%". x = 0..1 */
+export function fmtPct(x, digits = 0) {
+  if (x == null || !isFinite(x)) return "–";
+  return new Intl.NumberFormat(lang === "tr" ? "tr-TR" : "en-US", {
+    style: "percent", minimumFractionDigits: digits, maximumFractionDigits: digits,
   }).format(x);
 }
 

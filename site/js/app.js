@@ -1,11 +1,15 @@
 // Uygulama kabuğu: veri yükleme, hash yönlendirme (#/sayfa?parametreler), dil ve tema, karşılaştırma seçimi.
 import { t, lang, setLang, applyStatic } from "./i18n.js";
 import { renderPopular } from "./pages/popular.js";
-import { renderSoon } from "./pages/soon.js";
 import { renderCalc } from "./pages/calc.js";
+import { renderCompare } from "./pages/compare.js";
+import { renderAll } from "./pages/all.js";
+import { renderCable } from "./pages/cable.js";
+import { renderMethod } from "./pages/method.js";
 
 const view = document.getElementById("view");
-const ROUTES = { popular: renderPopular, calc: renderCalc, compare: renderSoon, all: renderSoon };
+const ROUTES = { popular: renderPopular, calc: renderCalc, compare: renderCompare, all: renderAll, cable: renderCable, method: renderMethod };
+const TAB_OF = { cable: "all", method: null };
 
 const ctx = {
   db: null,
@@ -20,7 +24,12 @@ const ctx = {
       else this.params.set(k, v);
     }
     const q = this.params.toString();
-    history.replaceState(null, "", `#/${this.route}${q ? "?" + q : ""}`);
+    history.replaceState(null, "", `#/${this.route}${this.arg ? "/" + encodeURIComponent(this.arg) : ""}${q ? "?" + q : ""}`);
+  },
+  setCmp(list) {
+    this.cmp = [...list];
+    try { localStorage.setItem("cmp", JSON.stringify(this.cmp)); } catch (e) { /* özel pencere */ }
+    updateCmpBadge();
   },
   toggleCmp(id) {
     const i = this.cmp.indexOf(id);
@@ -51,20 +60,24 @@ function updateCmpBadge() {
 function parseHash() {
   const h = location.hash.replace(/^#\/?/, "");
   const [path, q] = h.split("?");
-  ctx.route = ROUTES[path] ? path : "popular";
+  const [route, arg] = path.split("/");
+  ctx.route = ROUTES[route] ? route : "popular";
+  ctx.arg = arg ? decodeURIComponent(arg) : null;
   ctx.params = new URLSearchParams(q || "");
 }
 
 function render() {
   parseHash();
   document.querySelectorAll(".tab-btn").forEach((a) => {
-    const on = a.dataset.route === ctx.route;
+    const tab = ctx.route in TAB_OF ? TAB_OF[ctx.route] : ctx.route;
+    const on = a.dataset.route === tab;
     a.classList.toggle("active", on);
     a.setAttribute("aria-selected", on ? "true" : "false");
   });
   if (!ctx.db) return;
   view.replaceChildren();
-  ROUTES[ctx.route](view, ctx);
+  ROUTES[ctx.route](view, ctx, ctx.arg);
+  window.scrollTo(0, 0);
   renderFooter();
 }
 
@@ -72,7 +85,7 @@ function renderFooter() {
   const d = ctx.db;
   const foot = document.getElementById("foot");
   foot.innerHTML = `${t("foot", d.v, d.cables.length, Object.keys(d.src).length)} · ${t("foot_license")} · ` +
-    `<a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>`;
+    `<a href="#/method">${t("foot_method")}</a> · <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>`;
 }
 
 function initHeader() {

@@ -1,5 +1,24 @@
 # Devir notu
 
+## 2026-10-09 — M4 tamam (Karşılaştır, Tümü, Kablo detayı, Yöntem)
+
+- `site/js/chart.js`: kütüphanesiz log-log SVG grafik; dataviz referans paletinin 8 kategorik slotu (açık/koyu ayrı,
+  `--series-N`), seri başına kesik çizgi deseni, ≥2 seride açıklama, ≤4 seride doğrudan etiket (çakışma önleyici),
+  gezinmede dikey çizgi + değer kutusu.
+- `#/compare?c=ID,ID&f=&L=&P=&s=` (en fazla 8; URL'deki seçim `ctx.setCmp` ile Popüler seçimine yazılır),
+  `#/all?q=&z=&cls=&m=&f=&sort=&dir=`, `#/cable/ID` (bantlar, eğri + datasheet noktaları, özellikler, nokta tabloları,
+  kaynaklar, benzerler), `#/method` (yöntem, değer türleri, 58 kaynak, lisans). `util.js` ortak yardımcılar.
+- Yüzde biçimi `fmtPct` (TR "%55", EN "55%"). Popüler kart başlığı detaya bağlı.
+- Tarayıcıda: konsol hatası yok; tüm sayfalar 375px'te taşmasız; grafik etiketleri çakışmasız.
+
+**Tuzaklar**
+- Grafik DOM'a eklenmeden kurulur: `getBBox()` sıfır döner - etiket kutusu yazı uzunluğundan tahmin ediliyor.
+- Mobil tek sütun grid'de `1fr` yerine `minmax(0,1fr)` (yoksa içerik taşırır).
+- Pencere küçültülmüşken ekran görüntüsü zaman aşımına uğrar; ölçümler JS ile.
+
+**Sıradaki:** M5 - PWA (service worker + manifest + ikonlar; önbellek sürümleme modül önbelleği sorununu da çözer),
+erişilebilirlik cilası, GitHub Pages (site/ için Actions ile yayın) ve repo homepage. Pages açmak kullanıcı onayı ister.
+
 ## 2026-10-09 — Bükülme yarıçapı gösterimi düzeltildi (kullanıcı bildirimi)
 
 - Kullanıcı LMR-400'ün bükülmesinin (25 mm) kalınlığına göre düşük göründüğünü bildirdi. Veri kaynakla aynıydı; sorun

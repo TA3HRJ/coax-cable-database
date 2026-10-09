@@ -119,8 +119,9 @@ export function renderPopular(view, ctx) {
     const cls = el("div", "c-class");
     cls.innerHTML = `<span>${esc(lang === "tr" ? k.tr : k.en)} · ${fmt(c.od, 1)} mm</span>` +
       (c.std ? `<span class="tag" title="${esc(t("std_title"))}">${t("standard")}</span>` : "");
-    const title = el("div", "c-title");
+    const title = el("a", "c-title");
     title.textContent = c.s;
+    title.href = `#/cable/${encodeURIComponent(c.id)}`;
     const sub = el("div", "c-sub");
     sub.textContent = c.n;
     const value = el("div", "c-value");

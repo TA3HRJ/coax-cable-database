@@ -2,8 +2,8 @@
 
 A referenced, formula-driven attenuation and specification database for 65 coaxial cables used in amateur radio —
 every value traced to a manufacturer datasheet.
-A web interface is in progress (see [docs/PLAN.md](docs/PLAN.md)); its data file and calculation core are ready
-and tested against the Excel workbook.
+A static web interface lives in `site/` (popular cables, calculator, comparison, catalogue, cable details, method);
+its calculation is tested against the Excel workbook. Publishing on GitHub Pages is the next step (see [docs/PLAN.md](docs/PLAN.md)).
 
 ---
 

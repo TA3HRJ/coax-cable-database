@@ -1,6 +1,6 @@
 // Hesaplayıcı: tek kablo, tek hat. Hesap coax.lineCalc ile yapılır (Excel Calculator sayfasıyla eşlik testli).
 // URL: #/calc?c=ID&f=MHz&L=m&u=ft&P=W&s=SWR
-import { t, lang, fmt } from "../i18n.js";
+import { t, lang, fmt, fmtPct } from "../i18n.js";
 import * as coax from "../coax.js";
 
 const FT = coax.FT_PER_M;
@@ -125,7 +125,7 @@ export function renderCalc(view, ctx) {
     const hero = el("div", "hero");
     hero.innerHTML =
       `<div class="hero-k">${t("power_at_antenna")}</div>` +
-      `<div class="hero-v num">${fmt(r.pOutW, r.pOutW < 10 ? 2 : 1)} W <small>(${fmt(r.efficiency * 100, 1)} %)</small></div>` +
+      `<div class="hero-v num">${fmt(r.pOutW, r.pOutW < 10 ? 2 : 1)} W <small>(${fmtPct(r.efficiency, 1)})</small></div>` +
       `<div class="hero-s">${t("of_power_lost", fmt(st.P - r.pOutW, 1), fmt(r.totalLossDb, 2))}</div>`;
     const bar = el("div", "bar big");
     bar.setAttribute("aria-hidden", "true");
