@@ -2,7 +2,8 @@
 
 A referenced, formula-driven attenuation and specification database for 65 coaxial cables used in amateur radio —
 every value traced to a manufacturer datasheet.
-A web interface is planned (see [docs/PLAN.md](docs/PLAN.md)).
+A web interface is in progress (see [docs/PLAN.md](docs/PLAN.md)); its data file and calculation core are ready
+and tested against the Excel workbook.
 
 ---
 
@@ -22,7 +23,12 @@ A web interface is planned (see [docs/PLAN.md](docs/PLAN.md)).
 ## Files
 
 ```
-TA3HRJ_Coax_Database.xlsx       # master workbook (Excel) - Ham_Bands, Calculator, Graph, data tables
+TA3HX_Coax_Database.xlsx       # master workbook (Excel) - Ham_Bands, Calculator, Graph, data tables
+docs/
+├── data/cables.min.json        # compact data the web site loads (generated)
+├── js/coax.js                  # calculation core (same method as the workbook, no DOM)
+├── PLAN.md                     # web interface plan
+└── HANDOFF.md                  # session handoff notes
 export/
 ├── coax.sqlite                 # SQLite with foreign keys
 ├── csv/*.csv                   # UTF-8, comma separated, decimal point
@@ -34,8 +40,8 @@ scripts/
 ├── points_extra.py             # generated - do not edit
 ├── export_db.py                # workbook -> export/ (CSV + SQLite); cleans file metadata first
 └── sanitize_xlsx.py            # strips local paths / author names from .xlsx metadata
+tests/                          # parity tests: JS and Python vs. Excel-calculated results
 kaynaklar/                      # source index (README.md); datasheet PDFs are not redistributed
-docs/                           # plan and handoff notes; future GitHub Pages root
 data/legacy/                    # the original hand-made chart (metadata-cleaned copy)
 ```
 
@@ -43,18 +49,28 @@ data/legacy/                    # the original hand-made chart (metadata-cleaned
 
 ```bash
 pip install openpyxl pdfplumber
-python -X utf8 scripts/build_database.py   # writes TA3HRJ_Coax_Database.xlsx
+python -X utf8 scripts/build_database.py   # writes TA3HX_Coax_Database.xlsx
 ```
 
 Open the workbook in Excel once and save it so formula results are cached, then:
 
 ```bash
-python -X utf8 scripts/export_db.py        # refreshes export/coax.sqlite and export/csv/
+python -X utf8 scripts/export_db.py        # refreshes export/, docs/data/, test fixture, source index
 ```
 
 `gen_points.py` needs the datasheet PDFs in `kaynaklar/`; download them from the URLs in
 [kaynaklar/README.md](kaynaklar/README.md). The generated `points_extra.py` is committed, so building the
 workbook does not require the PDFs.
+
+## Tests
+
+```bash
+python -m unittest discover -s tests   # data consistency + Python interpolation vs. Excel
+node --test tests/                     # docs/js/coax.js vs. Excel (Ham_Bands, Calculator, all cables)
+```
+
+Without Node, serve the repo root (`python -m http.server`) and open `/tests/parity.html`. Both run on every push
+(GitHub Actions).
 
 ## Data caveats
 
@@ -64,11 +80,16 @@ workbook does not require the PDFs.
   Ecoflex 10, Aircell 7 and Aircell 5 are about 5 % lower.
 - Connector and splice losses are not included.
 
+## License
+
+Code: MIT ([LICENSE](LICENSE)). Compiled data: CC BY 4.0 ([LICENSE-DATA.md](LICENSE-DATA.md)) — manufacturer
+datasheets remain their owners' and are not redistributed.
+
 ---
 
 ## Türkçe özet
 
 Amatör telsizcilikte kullanılan 65 koaksiyel kablonun zayıflama, güç ve yapı verileri; her değer bir üretici
-belgesine bağlı. Ana dosya `TA3HRJ_Coax_Database.xlsx` (Ham_Bands, Hesaplayıcı, Grafik ve veri tabloları),
+belgesine bağlı. Ana dosya `TA3HX_Coax_Database.xlsx` (Ham_Bands, Hesaplayıcı, Grafik ve veri tabloları),
 program için `export/coax.sqlite` ve `export/csv/`. Hesap yöntemi: datasheet noktaları arasında log-log
 interpolasyon. Web arayüzü planı: [docs/PLAN.md](docs/PLAN.md).

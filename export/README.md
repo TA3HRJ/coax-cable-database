@@ -1,6 +1,6 @@
-# TA3HRJ Koaksiyel Kablo Veritabanı — dışa aktarım
+# TA3HX Koaksiyel Kablo Veritabanı — dışa aktarım
 
-`TA3HRJ_Coax_Database.xlsx` dosyasından `scripts/export_db.py` ile üretilir. Elle düzenlemeyin, Excel'i düzenleyip yeniden üretin:
+`TA3HX_Coax_Database.xlsx` dosyasından `scripts/export_db.py` ile üretilir. Elle düzenlemeyin, Excel'i düzenleyip yeniden üretin:
 
 ```
 python -X utf8 scripts/export_db.py

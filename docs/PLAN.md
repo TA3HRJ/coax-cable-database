@@ -1,6 +1,6 @@
 # Web arayüzü planı
 
-Durum: taslak · 2026-10-09
+Durum: M1 tamam, sıradaki M2 · 2026-10-09
 Hedef: veritabanını sade, hızlı ve anlaşılır bir web sitesine dönüştürmek. Site, telsizcinin
 "hangi kabloyu almalıyım, şu uzunlukta ne kadar kaybederim?" sorusuna birkaç tıkla cevap vermeli.
 
@@ -18,7 +18,7 @@ Diğer repolarla (ör. `turkey-repeaters`) aynı düzen:
 - **Grafik:** log-log eksenli zayıflama eğrileri için hafif bir kütüphane (uPlot, ~45 KB) ya da elle SVG.
   Harici kütüphane gerekirse sabit sürümle CDN'den, yoksa repoya gömülü.
 - **PWA:** service worker ile çevrimdışı çalışma (sahada, antende internet yokken de kullanılabilsin).
-- **TR / EN** dil düğmesi, **koyu mod** (sistemi izler, elle değiştirilebilir), **paylaşılabilir URL**
+- **TR / EN** dil düğmesi; **varsayılan dil tarayıcı dili** (tr* → Türkçe, diğerleri İngilizce, seçim hatırlanır), **koyu mod** (sistemi izler, elle değiştirilebilir), **paylaşılabilir URL**
   (`?c=TMS-LMR400,BEL-8267&f=145&L=20`).
 - **Birim düğmesi:** dB/100 m ↔ dB/100 ft, m ↔ ft.
 
@@ -100,7 +100,10 @@ Veritabanındaki güncel değerler (dB/100 m), kartlarda gösterilecek bilgiye �
 
 - Sayfanın üstünde **bant çipleri** (160 m … 6 cm) ve bir **uzunluk kaydırıcısı** bulunur. Tüm kartlar anında güncellenir;
   "20 m RG-58 ile 2 m'de vericinin yarısını kaybediyorum" bilgisi hesap yapmadan görülür.
-- Maksimum değer yayımlayan kablolarda küçük bir "maks." rozeti, veri aralığı dışındaki değerlerde "tahmini" rozeti gösterilir.
+- Maksimum değer yayımlayan kablolar (`val = "max"`: Reçber, Ericsson) diğerleriyle **yan yana** gösterilir; değerin yanında
+  bir **üst simge göstergesi** (ör. 8.8<sup>maks</sup> ya da 8.8<sup>†</sup>) bulunur. Üzerine gelince/dokununca ve sayfa altındaki
+  dipnotta açıklama çıkar: "Üretici maksimum değer yayımlıyor; tipik değer genellikle daha düşüktür."
+  Veri aralığı dışındaki (tahmini) değerler de aynı yöntemle ayrı bir üst simgeyle (<sup>~</sup>) işaretlenir.
 - 75/93 Ω kablolar bu sayfada gösterilmez; yalnızca "Tümü" sayfasında, süzgeçle görünür.
 
 ## 4. Arayüz ilkeleri (sade ve şık)
@@ -111,22 +114,25 @@ Veritabanındaki güncel değerler (dB/100 m), kartlarda gösterilecek bilgiye �
 - Kaynak her zaman bir tık uzakta: her değerin yanında "↗ datasheet".
 - Erişilebilirlik: klavye ile gezinme, renk körlüğüne uygun palet, grafikte renk yanında çizgi stili.
 
-## 5. Veri tarafında gerekenler
+## 5. Veri tarafında gerekenler (M1 - tamam)
 
-1. `Cables` tablosuna yeni sütunlar: `size_class` (yukarıdaki sınıflar), `popular_rank` (boş = popüler değil),
+1. `Cables` tablosuna yeni sütunlar (eklendi: `short_name`, `size_class`, `popular_rank`, `standard_type`, `value_type`;
+   sınıf kullanım metinleri `classes` içinde): `size_class` (yukarıdaki sınıflar), `popular_rank` (boş = popüler değil),
    `use_case` (kısa TR/EN metin), `name_en` / kısa ad (kart başlığı için, ör. "LMR-400").
 2. `scripts/export_db.py` → `docs/data/cables.min.json`: kablolar, frekansa göre sıralı noktalar, güç noktaları,
    kaynak başlık ve adresleri. Kısa anahtarlar, gereksiz QA sütunları yok.
 3. **Eşlik testi:** JS interpolasyonu, birkaç yüz (kablo, frekans) çifti için SQLite `ham_bands` ve Excel ile
    aynı sonucu vermeli. Bu, `tests/` altında Node ya da Python ile yazılır.
-4. Marka: site ve dosya adlarında çağrı işareti TA3HRJ yerine **TA3HX** (diğer repolarda geçiş yapılmış).
+4. Marka: site ve dosya adlarında çağrı işareti **TA3HX** (yapıldı; repo adresi GitHub hesabı nedeniyle TA3HRJ/...).
+5. Hesap çekirdeği `docs/js/coax.js` (DOM'suz ES modülü): interpolasyon, SWR'li kayıp, güç sınırı, dalga boyu.
+   Eşlik testi 6309 denetimle Excel'e karşı geçiyor; bozulmuş hesapla denendi, hatayı yakalıyor.
 
 ## 6. Aşamalar
 
 | # | İş | Çıktı |
 |---|---|---|
 | M0 | Repo, yapı, plan | Bu belge (tamam) |
-| M1 | Veri ekleri + `cables.min.json` + eşlik testi | `docs/data/`, `tests/` |
+| M1 | Veri ekleri + `cables.min.json` + eşlik testi | `docs/data/`, `docs/js/coax.js`, `tests/`, CI (tamam) |
 | M2 | Site iskeleti, gezinme, tema, dil, **Popüler** sayfası | Yayınlanabilir ilk sürüm |
 | M3 | **Hesaplayıcı** (+ paylaşılabilir URL) | |
 | M4 | **Karşılaştır**, **Tümü**, **Kablo detayı**, **Yöntem** | |
@@ -135,12 +141,13 @@ Veritabanındaki güncel değerler (dB/100 m), kartlarda gösterilecek bilgiye �
 
 Her aşama ayrı commit/PR; M2 sonrası site kullanılabilir durumda olur.
 
-## 7. Açık sorular
+## 7. Kararlar (2026-10-09)
 
-1. **Lisans:** Diğer repoların çoğunda lisans yok. Veri için CC BY 4.0, kod için MIT önerilir; karar sizin.
-2. **Popüler listesi:** Yukarıdaki sınıflandırma ve öne çıkan 8 kart uygun mu, eklenecek ya da çıkarılacak bir kablo var mı?
-3. **Varsayılan dil:** Türkçe mi açılsın (önerilen), yoksa tarayıcı diline mi uysun?
-4. **Maksimum ve tipik değerler:** Popüler kartlarda farklı türdeki değerler yan yana gösterilsin mi, yoksa rozetle yetinilsin mi?
+1. **Lisans:** kod MIT, veri CC BY 4.0 (`LICENSE`, `LICENSE-DATA.md`).
+2. **Popüler listesi:** önerildiği gibi (§3); `scripts/cables_extra.py` → `POPULAR`.
+3. **Varsayılan dil:** tarayıcı dili.
+4. **Maksimum değerler:** yan yana, üst simge göstergesi + açıklama (§3 kart tasarımı).
+5. **Çağrı işareti:** TA3HX.
 
 ## 8. Riskler
 

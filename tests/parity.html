@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eşlik testi</title>
+<style>
+  body { font: 14px/1.5 system-ui, sans-serif; margin: 24px; background: #fff; color: #111; }
+  pre { white-space: pre-wrap; }
+  .ok { color: #11733a; } .fail { color: #b3261e; }
+</style>
+</head>
+<body>
+<h1>JS ↔ Excel eşlik testi</h1>
+<p>Repo kökü bir HTTP sunucusuyla açılmalı (ör. <code>python -m http.server</code>), sayfa: <code>/tests/parity.html</code>.</p>
+<pre id="out">çalışıyor…</pre>
+<script type="module">
+  import * as coax from "../docs/js/coax.js";
+  import { runParity } from "./parity.cases.mjs";
+  const out = document.getElementById("out");
+  try {
+    const [db, hamCsv, fixture] = await Promise.all([
+      fetch("../docs/data/cables.min.json").then((r) => r.json()),
+      fetch("../export/csv/ham_bands.csv").then((r) => r.text()),
+      fetch("./fixtures/excel_calculator.json").then((r) => r.json()),
+    ]);
+    const { checks, failures } = runParity({ db, hamCsv, fixture, coax });
+    out.className = failures.length ? "fail" : "ok";
+    out.textContent = `${failures.length ? "BAŞARISIZ" : "GEÇTİ"}: ${checks} denetim, ${failures.length} uyuşmazlık\n` +
+      failures.slice(0, 50).join("\n");
+    window.parityResult = { checks, failures: failures.length };
+  } catch (e) {
+    out.className = "fail";
+    out.textContent = "HATA: " + e;
+    window.parityResult = { error: String(e) };
+  }
+</script>
+</body>
+</html>

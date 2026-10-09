@@ -1,6 +1,6 @@
 # Kaynak belgeler
 
-Veritabanındaki her değer bu belgelerden birine bağlıdır (`Sources` sayfası / `sources` tablosu).
+Veritabanındaki her değer bu belgelerden birine bağlıdır (`Sources` sayfası / `sources` tablosu). Bu dosya `scripts/export_db.py` ile üretilir.
 
 Üretici PDF'leri üçüncü tarafların telifli belgeleri olduğu için **bu repoda yayımlanmaz** (`.gitignore`). Aşağıdaki adreslerden indirilip bu klasöre `Dosya` sütunundaki adla kaydedilebilir; `scripts/gen_points.py` noktaları yeniden çıkarmak için bunlara ihtiyaç duyar. `.txt` dosyaları web sayfalarından alınan verilerin kendi özetlerimizdir ve repoda bulunur.
 
@@ -8,7 +8,7 @@ Bazı bağlantılar zamanla değişebilir; belge tarihi ve revizyon bilgisi bu y
 
 | ID | Yayıncı | Belge | Rev./tarih | Barındıran | Dosya |
 |---|---|---|---|---|---|
-| S000 | TA3HRJ | 50 ohm Cable - Nominal attenuation of 30.5 metres (100ft) | - | Kullanıcı | `TA3HRJ - Coaxial_Cable_Attenuation_Chart.xlsx` |
+| S000 | TA3HX (o dönemki çağrı işareti TA3HRJ) | 50 ohm Cable - Nominal attenuation of 30.5 metres (100ft) | - | Kullanıcı | `TA3HRJ - Coaxial_Cable_Attenuation_Chart.xlsx` |
 | S001 | Times Microwave Systems (Amphenol) | [Communications Coax Selection Guide (katalog s.202-203)](https://www.rfparts.com/old_site/pdf_docs/LMR/Coax_Selection_Guide.pdf) | 2007-2008 (PDF tarihi) | Distribütör kopyası (RF Parts) | `S001_TimesMicrowave_Coax_Selection_Guide.pdf` |
 | S002 | Times Microwave Systems (Amphenol) | [LMR-400 Low Loss Flexible Coax Cable Data Sheet](https://www.fairviewmicrowave.com/images/productPDF/LMR-400.pdf) | REV 1.3 / 2020 (PDF 2023-09-29) | Distribütör kopyası (Fairview Microwave) | `S002_TimesMicrowave_LMR-400_Fairview.pdf` |
 | S003 | Times Microwave Systems (Amphenol) | [LMR-240 Low Loss Flexible Coax Cable Data Sheet](https://www.fairviewmicrowave.com/images/productPDF/LMR-240.pdf) | 2023 (PDF 2024-06-27) | Distribütör kopyası (Fairview Microwave) | `S003_TimesMicrowave_LMR-240_Fairview.pdf` |

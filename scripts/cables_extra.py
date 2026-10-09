@@ -574,3 +574,73 @@ LEGACY_MAP_S2 = {
     5: ("BEL-8261", "Eşdeğer tip", "Eski değerler dolu PE RG-11/U'ya (Belden 8261) uyuyor; köpük PE RG-11 (Belden 9292) ayrıca eklendi ve daha düşük kayıplıdır."),
     6: ("BEL-8259", "Eşdeğer tip", "Satırda zayıflama değeri yok; Z0 53.5 Ω yazılmış (RG-58 ailesi 50-53.5 Ω)."),
 }
+
+
+# --------------------------------------------------------------------------------------------- WEB ARAYÜZÜ BİLGİLERİ
+# Kart başlığı / seçici için kısa ad (dilden bağımsız)
+SHORT_NAME = {
+    "BEL-83265": "RG-178", "BEL-8216": "RG-174", "BEL-84316": "RG-316", "BEL-83269": "RG-188", "TMS-LMR100A": "LMR-100A",
+    "BEL-8259": "RG-58", "MP-RG58CU": "RG-58 C/U (M&P)", "BEL-8219": "RG-58 (8219)", "BEL-9273": "RG-223",
+    "HAR-M17-128-RG400": "RG-400", "TMS-LMR195": "LMR-195", "BEL-83242": "RG-142", "BEL-9258": "RG-8X",
+    "TMS-LMR200": "LMR-200", "RCB-RWC200PE": "RWC 200", "SSB-AIRCELL5": "Aircell 5", "MP-AIRBORNE5": "Airborne 5",
+    "BEL-H155A01": "H155", "MP-HYPERFLEX5": "Hyperflex 5", "TMS-LMR240": "LMR-240", "RCB-RWC240PE": "RWC 240",
+    "RCB-RG213U-PE": "RG-213 (Reçber)", "BEL-8267": "RG-213", "BEL-8268": "RG-214", "MP-RG213U": "RG-213 (M&P)",
+    "SSB-AIRCELL7": "Aircell 7", "TMS-LMR300": "LMR-300", "CS-FSJ1-50A": "FSJ1-50A", "RFS-SCF14-50J": "SCF14-50J",
+    "MP-ULTRAFLEX7": "Ultraflex 7", "ERI-TZC50032": "TZC 500 32", "DAV-BURYFLEX": "Bury-Flex", "RFS-SCF38-50J": "SCF38-50J",
+    "BEL-9914": "Belden 9914", "SSB-ECOFLEX10": "Ecoflex 10", "BEL-H1000C1": "H1000", "RCB-RWC400PE": "RWC 400",
+    "TMS-LMR400": "LMR-400", "MP-ULTRAFLEX10": "Ultraflex 10", "MP-HYPERFLEX10": "Hyperflex 10", "BEL-H2000FLEX": "H2000 Flex",
+    "CS-FSJ2-50": "FSJ2-50", "MP-AIRBORNE10": "Airborne 10", "WFX-103": "Westflex 103", "CS-FSJ4-50B": "FSJ4-50B",
+    "CS-LDF2-50": "LDF2-50", "TMS-LMR500": "LMR-500", "GEN-10D-FB": "10D-FB", "MP-ULTRAFLEX13": "Ultraflex 13",
+    "MP-HYPERFLEX13": "Hyperflex 13", "SSB-ECOFLEX15": "Ecoflex 15", "TMS-LMR600": "LMR-600", "CS-LDF4-50A": "LDF4-50A",
+    "TMS-LMR900": "LMR-900", "TMS-LMR1200": "LMR-1200", "CS-LDF5-50A": "LDF5-50A", "TMS-LMR1700": "LMR-1700",
+    "CS-LDF6-50": "LDF6-50", "CS-LDF7-50A": "LDF7-50A", "BEL-83264": "RG-179", "BEL-8263": "RG-59", "BEL-8261": "RG-11",
+    "BEL-1694A": "RG-6", "BEL-9292": "RG-11 (9292)", "BEL-9269": "RG-62A",
+}
+
+# "Sık önerilenler" sırası (docs/PLAN.md §3). İlk 8 = öne çıkanlar. Kaynak: forum/satıcı önerilerinin derlemesi,
+# istatistik değil - kolayca değiştirilebilir.
+POPULAR = [
+    "BEL-8259", "BEL-9258", "BEL-8267", "TMS-LMR400", "BEL-H155A01", "SSB-AIRCELL7", "SSB-ECOFLEX10", "CS-LDF4-50A",
+    "BEL-84316", "BEL-8216", "SSB-AIRCELL5", "MP-AIRBORNE5", "TMS-LMR200", "RCB-RWC200PE", "TMS-LMR240", "RCB-RWC240PE",
+    "MP-ULTRAFLEX7", "BEL-H2000FLEX", "MP-HYPERFLEX10", "MP-AIRBORNE10", "RCB-RWC400PE", "WFX-103", "SSB-ECOFLEX15",
+    "TMS-LMR600", "MP-HYPERFLEX13", "CS-LDF5-50A",
+]
+FEATURED_COUNT = 8
+# Sınıfının "standart RG tipi" olarak gösterilecek kablolar (diğerleri düşük kayıplı alternatif)
+STANDARD_TYPES = {"BEL-8259", "BEL-9258", "BEL-8267", "BEL-84316", "BEL-8216"}
+# Zayıflamayı MAKSİMUM değer olarak yayımlayanlar (diğerleri nominal/tipik)
+MAX_VALUE = {"RCB-RWC200PE", "RCB-RWC240PE", "RCB-RWC400PE", "RCB-RG213U-PE", "ERI-TZC50032"}
+
+# Çap sınıfları: (anahtar, üst sınır mm, TR ad, EN ad, TR kullanım, EN kullanım)
+SIZE_CLASSES = [
+    ("thin", 3.5, "İnce / ara kablo", "Thin / jumper", "Cihaz içi bağlantılar, SDR, kısa ara kablolar",
+     "Internal wiring, SDR, short jumpers"),
+    ("rg58", 5.6, "RG-58 sınıfı (~5 mm)", "RG-58 class (~5 mm)", "Mobil kurulum, kısa hatlar, el telsizi",
+     "Mobile installs, short runs, handhelds"),
+    ("rg8x", 6.6, "RG-8X sınıfı (~6 mm)", "RG-8X class (~6 mm)", "Kısa baz hatları, taşınabilir istasyon",
+     "Short base runs, portable stations"),
+    ("c7", 9.0, "7 mm sınıfı", "7 mm class", "Rotor döngüsü, esneklik gereken yerler", "Rotator loops, where flexibility matters"),
+    ("rg213", 11.5, "RG-213 sınıfı (~10 mm)", "RG-213 class (~10 mm)", "HF baz, yüksek güç, VHF/UHF baz hatları",
+     "HF base, high power, VHF/UHF base feedlines"),
+    ("large", 999, "1/2\" ve üstü", "1/2\" and larger", "Uzun VHF/UHF/SHF hatları, kule", "Long VHF/UHF/SHF runs, towers"),
+]
+
+
+def size_class(od_mm):
+    for key, lim, *_ in SIZE_CLASSES:
+        if od_mm < lim:
+            return key
+    return SIZE_CLASSES[-1][0]
+
+
+def web_fields(cable):
+    """Cables tablosuna eklenen web sütunları (build_database.py çağırır)."""
+    cid = cable["cable_id"]
+    rank = POPULAR.index(cid) + 1 if cid in POPULAR else None
+    return {
+        "short_name": SHORT_NAME[cid],
+        "size_class": size_class(cable["od_mm"]),
+        "popular_rank": rank,
+        "standard_type": "Evet" if cid in STANDARD_TYPES else None,
+        "value_type": "max" if cid in MAX_VALUE else "typ",
+    }

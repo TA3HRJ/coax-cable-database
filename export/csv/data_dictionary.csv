@@ -4,6 +4,11 @@ cables,display_name,Görünen ad,,girdi
 cables,manufacturer,Üretici,,girdi
 cables,part_number,Üretici parça numarası,,girdi
 cables,family,Tip / aile (RG eşdeğeri vb.),,girdi
+cables,short_name,Kısa ad (web kartı / seçici),,girdi
+cables,size_class,"Çap sınıfı: thin, rg58, rg8x, c7, rg213, large (od_mm'den)",,girdi
+cables,popular_rank,Sık önerilenler sırası (1-8 öne çıkan; boş = listede değil),,girdi
+cables,standard_type,Sınıfının standart RG tipi mi (Evet / boş),,girdi
+cables,value_type,"Zayıflama değer türü: typ = nominal/tipik, max = maksimum",,girdi
 cables,impedance_ohm,Karakteristik empedans,Ω,girdi
 cables,impedance_tol_ohm,Empedans toleransı (±),Ω,girdi
 cables,od_mm,Dış çap (kılıf üzeri),mm,girdi

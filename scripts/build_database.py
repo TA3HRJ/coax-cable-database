@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-TA3HRJ Koaksiyel Kablo Veritabanı - çalışma kitabı üreticisi.
+TA3HX Koaksiyel Kablo Veritabanı - çalışma kitabı üreticisi.
 
 Veri: bu dosyadaki pilot kablolar + scripts/cables_extra.py (kablo bilgileri, elle noktalar)
       + scripts/points_extra.py (scripts/gen_points.py ile PDF'lerden otomatik çıkarılan noktalar).
@@ -21,7 +21,7 @@ from openpyxl.utils import get_column_letter as CL
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-OUT = os.environ.get("COAX_OUT") or os.path.join(ROOT, "TA3HRJ_Coax_Database.xlsx")
+OUT = os.environ.get("COAX_OUT") or os.path.join(ROOT, "TA3HX_Coax_Database.xlsx")
 LEGACY = os.path.join(ROOT, "data", "legacy", "TA3HRJ - Coaxial_Cable_Attenuation_Chart.xlsx")
 ACCESSED = "2026-10-08"
 ACCESSED_OVERRIDE = {"S012": "2026-10-09", "S013": "2026-10-09"}
@@ -50,7 +50,7 @@ M_PER_FT_100 = 100 / 30.48  # dB/100 ft -> dB/100 m çarpanı
 # ===================================================================== KAYNAKLAR
 SOURCES = [
     # id, yayıncı, belge, parça no, revizyon, belge tarihi, barındıran, url, yerel dosya, not
-    ("S000", "TA3HRJ", "50 ohm Cable - Nominal attenuation of 30.5 metres (100ft)", "-", "-", "-",
+    ("S000", "TA3HX (o dönemki çağrı işareti TA3HRJ)", "50 ohm Cable - Nominal attenuation of 30.5 metres (100ft)", "-", "-", "-",
      "Kullanıcı", "", "data/legacy/TA3HRJ - Coaxial_Cable_Attenuation_Chart.xlsx",
      "Orijinal elle derlenmiş tablo. Bant aralığı sütunları (ör. 148-174 MHz) tek frekansa bağlı değil."),
     ("S001", "Times Microwave Systems", "Communications Coax Selection Guide (katalog s.202-203)", "LMR serisi", "-", "2007-2008 (PDF tarihi)",
@@ -114,6 +114,11 @@ CABLE_COLS = [
     ("manufacturer", "Üretici", ""),
     ("part_number", "Üretici parça numarası", ""),
     ("family", "Tip / aile (RG eşdeğeri vb.)", ""),
+    ("short_name", "Kısa ad (web kartı / seçici)", ""),
+    ("size_class", "Çap sınıfı: thin, rg58, rg8x, c7, rg213, large (od_mm'den)", ""),
+    ("popular_rank", "Sık önerilenler sırası (1-8 öne çıkan; boş = listede değil)", ""),
+    ("standard_type", "Sınıfının standart RG tipi mi (Evet / boş)", ""),
+    ("value_type", "Zayıflama değer türü: typ = nominal/tipik, max = maksimum", ""),
     ("impedance_ohm", "Karakteristik empedans", "Ω"),
     ("impedance_tol_ohm", "Empedans toleransı (±)", "Ω"),
     ("od_mm", "Dış çap (kılıf üzeri)", "mm"),
@@ -359,7 +364,7 @@ LEGACY_NOTES = {
 # ===================================================================== GENİŞLETME (pilot sonrası)
 import sys  # noqa: E402
 sys.path.insert(0, HERE)
-from cables_extra import SOURCES_X, CABLES_X, ATT_MANUAL, PWR_MANUAL, LEGACY_MAP_X, LEGACY_NOTES_X, LEGACY_MAP_S2  # noqa: E402
+from cables_extra import SOURCES_X, CABLES_X, ATT_MANUAL, PWR_MANUAL, LEGACY_MAP_X, LEGACY_NOTES_X, LEGACY_MAP_S2, web_fields  # noqa: E402
 from points_extra import ATT_PDF, PWR_PDF  # noqa: E402
 
 SOURCES += SOURCES_X
@@ -372,6 +377,9 @@ for _r, _n in LEGACY_NOTES_X.items():
 LEGACY_NO_SOURCE = set(LEGACY_NOTES_X)
 for _s in SOURCES_X:
     ACCESSED_OVERRIDE[_s[0]] = "2026-10-09"
+
+for _c in CABLES:
+    _c.update(web_fields(_c))
 
 # bütünlük kontrolleri
 _ids = [c["cable_id"] for c in CABLES]
@@ -1049,7 +1057,7 @@ def build():
     rd.column_dimensions["A"].width = 2
     rd.column_dimensions["B"].width = 120
     lines = [
-        ("TA3HRJ Koaksiyel Kablo Veritabanı", f_title),
+        ("TA3HX Koaksiyel Kablo Veritabanı", f_title),
         (f"Sürüm 1.0 · 2026-10-09 · {n_cab} kablo · {n_att} zayıflama noktası · {n_pwr} güç noktası · {len(SOURCES) - 1} kaynak belge "
          f"(PDF/metin kopyaları 'kaynaklar' klasöründe)", f_sub),
         ("", None),
