@@ -2,7 +2,7 @@
 
 export const STRINGS = {
   tr: {
-    app_title: "Koaksiyel Kablo Veritabanı",
+    app_title: "Koaksiyel Kablo Veritabanı", skip: "İçeriğe geç", nav_label: "Sayfalar",
     tab_popular: "Popüler", tab_calc: "Hesapla", tab_compare: "Karşılaştır", tab_all: "Tümü",
     theme_toggle: "Açık / koyu tema",
     loading: "Veri yükleniyor…",
@@ -93,7 +93,7 @@ export const STRINGS = {
     foot_license: "Kod MIT · veri CC BY 4.0",
   },
   en: {
-    app_title: "Coax Cable Database",
+    app_title: "Coax Cable Database", skip: "Skip to content", nav_label: "Pages",
     tab_popular: "Popular", tab_calc: "Calculate", tab_compare: "Compare", tab_all: "All cables",
     theme_toggle: "Light / dark theme",
     loading: "Loading data…",

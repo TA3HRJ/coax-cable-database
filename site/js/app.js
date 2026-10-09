@@ -78,8 +78,13 @@ function render() {
   view.replaceChildren();
   ROUTES[ctx.route](view, ctx, ctx.arg);
   window.scrollTo(0, 0);
+  // ekran okuyucu ve klavye için: sayfa değişince odak içeriğe (ilk yüklemede değil)
+  if (rendered) view.focus({ preventScroll: true });
+  rendered = true;
   renderFooter();
 }
+
+let rendered = false;
 
 function renderFooter() {
   const d = ctx.db;
@@ -89,10 +94,13 @@ function renderFooter() {
 }
 
 function initHeader() {
+  // Atlama bağlantısı: hash yönlendirmesini bozmadan odağı içeriğe taşı
+  document.querySelector(".skip").addEventListener("click", (e) => { e.preventDefault(); view.focus(); });
   const bl = document.getElementById("btn-lang");
   const sync = () => {
     bl.textContent = lang === "tr" ? "EN" : "TR";
     document.title = `${t("app_title")} · TA3HX`;
+    document.querySelector('nav.tab-bar').setAttribute("aria-label", t("nav_label"));
     applyStatic();
   };
   bl.addEventListener("click", () => { setLang(lang === "tr" ? "en" : "tr"); sync(); render(); });
@@ -118,6 +126,9 @@ async function main() {
   for (const c of ctx.db.cables) ctx.byId[c.id] = c;
   updateCmpBadge();
   render();
+  if ("serviceWorker" in navigator && location.protocol !== "file:") {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
 }
 
 main();

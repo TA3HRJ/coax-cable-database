@@ -77,5 +77,22 @@ class ExportTests(unittest.TestCase):
             self.assertAlmostEqual(got / want, 1.0, delta=2e-5, msg=(r["cable_id"], r["freq_mhz"]))
 
 
+class SiteTests(unittest.TestCase):
+    def test_service_worker_precaches_every_site_file(self):
+        """Yeni bir sayfa/dosya eklenip sw.js PRECACHE'e yazılmazsa çevrimdışı çalışma sessizce bozulur."""
+        import re
+        site = os.path.join(ROOT, "site")
+        with open(os.path.join(site, "sw.js"), encoding="utf-8") as f:
+            pre = set(re.findall(r'"\./([^"]+)"', f.read()))
+        need = set()
+        for d, _, files in os.walk(site):
+            for fn in files:
+                rel = os.path.relpath(os.path.join(d, fn), site).replace(os.sep, "/")
+                if rel.endswith((".js", ".css", ".json", ".html")) and rel != "sw.js":
+                    need.add(rel)
+        self.assertEqual(sorted(need - pre), [], "sw.js PRECACHE listesinde eksik dosya")
+        self.assertEqual(sorted(p for p in pre if p and not os.path.exists(os.path.join(site, p))), [], "PRECACHE'te olmayan dosya")
+
+
 if __name__ == "__main__":
     unittest.main()
