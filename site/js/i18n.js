@@ -61,7 +61,7 @@ export const STRINGS = {
     curve_note: (n, a, b) => `Noktalar: datasheet'in yayımladığı ${n} değer (${a} – ${b}). Çizgi: noktalar arasında log-log interpolasyon; aralığın yarısından iki katına kadar çizilir.`,
     specs_title: "Özellikler", notes: "Notlar", data_lang_note: "",
     points_title: "Datasheet değerleri", power_points: "Ortalama güç sınırı (datasheet)",
-    sources_title: "Kaynaklar", qa_note: (r) => `Kalite kontrolü: noktaların k0+k1·√f+k2·f modelinden ortalama sapması %${r}.`,
+    sources_title: "Kaynaklar", report_error: "Hatalı bir değer mi var? Bildirin", qa_note: (r) => `Kalite kontrolü: noktaların k0+k1·√f+k2·f modelinden ortalama sapması %${r}.`,
     similar_title: "Aynı sınıftaki diğer kablolar", similar_note: "2 m bandında (144 MHz) dB/100 m, en az kayıplıdan başlayarak.",
     f_manufacturer: "Üretici", f_part_number: "Parça no", f_family: "Tip / aile", f_impedance: "Empedans", f_od: "Dış çap",
     f_velocity_factor: "Hız faktörü (VF)", f_capacitance: "Kapasitans", f_inductance: "Endüktans", f_inner_material: "İç iletken",
@@ -86,7 +86,7 @@ export const STRINGS = {
     all_sources: (n) => `Kaynak belgeler (${n})`,
     data_body: `<h2>Veri ve lisans</h2>
 <p>Veritabanı Excel çalışma kitabı, SQLite ve CSV olarak <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>'da indirilebilir. Derlenmiş veri CC BY 4.0, kod MIT lisanslıdır. Üretici datasheet'leri sahiplerine aittir ve burada yeniden dağıtılmaz; yalnızca başlık ve adresleri listelenir.</p>
-<p>Hatalı bir değer ya da eksik bir kablo görürseniz GitHub'da bir issue açabilirsiniz.</p>`,
+<p>Hatalı bir değer ya da eksik bir kablo görürseniz GitHub'da <a href="https://github.com/TA3HRJ/coax-cable-database/issues/new/choose" rel="noopener">bir issue açabilirsiniz</a>.</p>`,
     foot_method: "Yöntem ve kaynaklar",
     none_selected: "henüz kablo seçilmedi",
     foot: (v, n, s) => `Veri sürümü ${v} · ${n} kablo · ${s} kaynak belge`,
@@ -152,7 +152,7 @@ export const STRINGS = {
     curve_note: (n, a, b) => `Points: the ${n} values the datasheet publishes (${a} – ${b}). Line: log-log interpolation between them, drawn from half to twice the data range.`,
     specs_title: "Specifications", notes: "Notes", data_lang_note: "Text fields of the data are in Turkish.",
     points_title: "Datasheet values", power_points: "Average power rating (datasheet)",
-    sources_title: "Sources", qa_note: (r) => `Quality check: the points deviate ${r}% on average from a k0+k1·√f+k2·f fit.`,
+    sources_title: "Sources", report_error: "Spotted a wrong value? Report it", qa_note: (r) => `Quality check: the points deviate ${r}% on average from a k0+k1·√f+k2·f fit.`,
     similar_title: "Other cables in the same class", similar_note: "dB/100 m on 2 m (144 MHz), lowest loss first.",
     f_manufacturer: "Manufacturer", f_part_number: "Part number", f_family: "Type / family", f_impedance: "Impedance", f_od: "Outer diameter",
     f_velocity_factor: "Velocity factor", f_capacitance: "Capacitance", f_inductance: "Inductance", f_inner_material: "Center conductor",
@@ -177,7 +177,7 @@ export const STRINGS = {
     all_sources: (n) => `Source documents (${n})`,
     data_body: `<h2>Data and license</h2>
 <p>The database can be downloaded from <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a> as an Excel workbook, SQLite and CSV. The compiled data is CC BY 4.0, the code MIT. Manufacturer datasheets belong to their owners and are not redistributed here; only their titles and URLs are listed.</p>
-<p>If you spot a wrong value or a missing cable, please open an issue on GitHub.</p>`,
+<p>If you spot a wrong value or a missing cable, please <a href="https://github.com/TA3HRJ/coax-cable-database/issues/new/choose" rel="noopener">open an issue on GitHub</a>.</p>`,
     foot_method: "Method and sources",
     none_selected: "no cables selected yet",
     foot: (v, n, s) => `Data version ${v} · ${n} cables · ${s} source documents`,

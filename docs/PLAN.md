@@ -1,6 +1,6 @@
 # Web arayüzü planı
 
-Durum: M1–M5 tamam, site yayında: https://ta3hrj.github.io/coax-cable-database/ · sıradaki M6 (geri bildirim yolu) · 2026-10-09
+Durum: M1–M6 tamam, site yayında: https://ta3hrj.github.io/coax-cable-database/ · 2026-10-09
 Hedef: veritabanını sade, hızlı ve anlaşılır bir web sitesine dönüştürmek. Site, telsizcinin
 "hangi kabloyu almalıyım, şu uzunlukta ne kadar kaybederim?" sorusuna birkaç tıkla cevap vermeli.
 

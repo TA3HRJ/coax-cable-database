@@ -1,0 +1,55 @@
+name: Hatalı veri / Data correction
+description: Bir kablonun değeri yanlış ya da eksik / A cable value is wrong or missing
+title: "[Veri] "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Teşekkürler! Her değer bir üretici belgesine dayandığı için düzeltmede de bir kaynak gerekiyor.
+        Thank you! Every value is tied to a manufacturer document, so a correction needs a source too.
+  - type: input
+    id: cable
+    attributes:
+      label: Kablo / Cable
+      description: Sitedeki kablo kimliği ya da adı (ör. TMS-LMR400, Ecoflex 10) / Cable id or name as on the site
+    validations:
+      required: true
+  - type: dropdown
+    id: field
+    attributes:
+      label: Hangi değer? / Which value?
+      options:
+        - Zayıflama / Attenuation
+        - Güç sınırı / Power rating
+        - Çap, VF, kapasite vb. / Diameter, VF, capacitance etc.
+        - Bükülme yarıçapı / Bend radius
+        - Kaynak bağlantısı / Source link
+        - Diğer / Other
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Sitede görünen / What the site shows
+      placeholder: "ör. 144 MHz: 4,83 dB/100 m"
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: Doğrusu / What it should be
+      placeholder: "ör. 144 MHz: 4,70 dB/100 m (datasheet tablo 2)"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Kaynak / Source
+      description: Üretici datasheet'inin adresi, belge adı ve revizyonu / Manufacturer datasheet URL, title and revision
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Not / Notes

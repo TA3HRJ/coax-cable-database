@@ -91,6 +91,9 @@ export function renderCable(view, ctx, id) {
   ul.innerHTML = used.map((sid) => srcItem(db, sid)).join("");
   srcs.append(ul);
   if (c.rms != null) srcs.append(el("p", "muted", t("qa_note", fmt(c.rms * 100, 1))));
+  const issue = "https://github.com/TA3HRJ/coax-cable-database/issues/new?template=data-correction.yml"
+    + `&cable=${encodeURIComponent(c.id)}&title=${encodeURIComponent("[Veri] " + c.s)}`;
+  srcs.append(el("p", "muted", `<a href="${esc(issue)}" rel="noopener">${t("report_error")}</a>`));
 
   // benzerler
   const sim = db.cables.filter((x) => x.cls === c.cls && x.z === c.z && x.id !== c.id && coax.isShown(x, 144))

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Yöntem ve kaynaklar / Method and sources
+    url: https://ta3hrj.github.io/coax-cable-database/#/method
+    about: Değerlerin nereden geldiği ve nasıl hesaplandığı / Where the values come from and how they are calculated

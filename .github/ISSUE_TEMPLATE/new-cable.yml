@@ -1,0 +1,36 @@
+name: Yeni kablo önerisi / Suggest a cable
+description: Veritabanında olmayan bir kablo / A cable that is not in the database
+title: "[Kablo] "
+labels: ["new cable"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bir kablo, zayıflama tablosu içeren yayımlanmış bir üretici belgesi varsa eklenebilir.
+        A cable can be added when a published manufacturer document with an attenuation table exists.
+  - type: input
+    id: cable
+    attributes:
+      label: Kablo ve üretici / Cable and manufacturer
+      placeholder: "ör. SSB Ecoflex 10 Plus"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Datasheet adresi / Datasheet URL
+      description: Mümkünse üreticinin kendi belgesi / Preferably the manufacturer's own document
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Neden? / Why?
+      description: Nerede kullanılıyor, neden ilginç / Where it is used, why it is interesting
+  - type: checkboxes
+    id: check
+    attributes:
+      label: Kontrol / Check
+      options:
+        - label: Sitedeki "Tümü" listesinde aradım, yok. / I searched the "All cables" list; it is not there.
+          required: true

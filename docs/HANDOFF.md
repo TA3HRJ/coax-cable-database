@@ -15,7 +15,7 @@
   (ortam kısıtı); mantık sayfa içinde sahte `self` ile, gerçek kayıt yayındaki HTTPS sitede doğrulandı.
 - `sw.js` önbellek sürümü `CACHE_VERSION`; PRECACHE yapısı değişirse artır.
 
-**Sıradaki (M6, isteğe bağlı):** hatalı veri / yeni kablo için issue şablonları; profil README'ye proje bağlantısı.
+**M6 tamam:** `.github/ISSUE_TEMPLATE/` (data-correction, new-cable, config; etiketler `data`, `new cable`); yöntem sayfasında issue bağlantısı, kablo sayfasında kabloyu önceden dolduran "hatalı değer bildir" bağlantısı (SW cache v2); profil README (TA3HRJ/TA3HRJ) Projects tablosuna satır eklendi. Planlanmış iş kalmadı.
 
 ## 2026-10-09 — M4 tamam (Karşılaştır, Tümü, Kablo detayı, Yöntem)
 
