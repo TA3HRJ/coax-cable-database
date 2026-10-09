@@ -98,7 +98,7 @@ function renderFooter() {
     tools.map(([u, l, me]) => `<a href="${u}"${me ? ' aria-current="page"' : ""}>${l}</a>`).join("") + `</nav>` +
     `<div class="fam-line"><span>${t("foot", d.v, d.cables.length, Object.keys(d.src).length)}</span><span>${t("foot_license")}</span>` +
     `<a href="#/method">${t("foot_method")}</a><a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>` +
-    `<span class="sp"></span><span>${t("fam_op")}</span></div>` +
+    `<span class="sp"></span><span>${t("fam_op")} <a href="https://www.qrz.com/db/TA3HX" rel="noopener">TA3HX</a></span></div>` +
     `<p class="fam-legal">${t("foot_legal")} <a href="#/method?s=legal">${t("foot_legal_link")}</a></p></div>`;
 }
 
@@ -120,6 +120,8 @@ function initHeader() {
     const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem("theme", next); } catch (e) { /* özel pencere */ }
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
   });
   sync();
 }
