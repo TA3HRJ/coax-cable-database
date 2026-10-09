@@ -90,7 +90,8 @@ function renderFooter() {
   const d = ctx.db;
   const foot = document.getElementById("foot");
   foot.innerHTML = `${t("foot", d.v, d.cables.length, Object.keys(d.src).length)} · ${t("foot_license")} · ` +
-    `<a href="#/method">${t("foot_method")}</a> · <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>`;
+    `<a href="#/method">${t("foot_method")}</a> · <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>` +
+    `<br><span class="foot-legal">${t("foot_legal")} <a href="#/method?s=legal">${t("foot_legal_link")}</a></span>`;
 }
 
 function initHeader() {

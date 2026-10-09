@@ -7,7 +7,7 @@
  *
  * PRECACHE listesi değişirse CACHE_VERSION'ı artırın.
  */
-const CACHE_VERSION = "v4";
+const CACHE_VERSION = "v5";
 const CACHE_NAME = `coax-db-${CACHE_VERSION}`;
 
 const PRECACHE = [

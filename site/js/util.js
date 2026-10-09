@@ -45,6 +45,22 @@ export function indicators(c, f) {
     (f != null && coax.isExtrapolated(c, f) ? `<sup class="ind est" title="${esc(t("ind_est_title"))}">~</sup>` : "");
 }
 
+/**
+ * Ticari marka işaretleri: yalnızca sahibinin kendi belgesinde ® ile gösterdiği adlar (bkz. Yöntem > Ticari markalar).
+ * Sayfadaki ilk belirgin kullanımda (kablo detayı başlığı ve özellikler) gösterilir; veri dosyalarında işaret yoktur.
+ */
+export const MARKS = [
+  [/\bLMR(?=[-\s]|$)/, "®"], [/\bHELIAX\b/i, "®"], [/\bCELLFLEX\b/i, "®"], [/\bCommScope\b/, "®"],
+  [/\bEcoflex\b/, "®"], [/\bAircell\b/, "®"], [/\bDuofoil\b/, "®"], [/\bDuobond\b/, "®"], [/\bMessi &amp; Paoloni\b/, "®"],
+];
+
+/** Metni kaçışlayıp bilinen markaların ilk geçişine üst simge ekler. */
+export function markHtml(s) {
+  let out = esc(s);
+  for (const [re, sym] of MARKS) out = out.replace(re, (m) => `${m}<sup class="tm">${sym}</sup>`);
+  return out;
+}
+
 export const MM_PER_IN = 25.4;
 
 /** Uzunluk (mm); ft biriminde inç (inçte varsayılan olarak iki basamak fazla). */

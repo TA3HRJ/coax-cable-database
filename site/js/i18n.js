@@ -89,6 +89,29 @@ export const STRINGS = {
 <p>Veritabanı Excel çalışma kitabı, SQLite ve CSV olarak <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a>'da indirilebilir. Derlenmiş veri CC BY 4.0, kod MIT lisanslıdır. Üretici datasheet'leri sahiplerine aittir ve burada yeniden dağıtılmaz; yalnızca başlık ve adresleri listelenir.</p>
 <p>Hatalı bir değer ya da eksik bir kablo görürseniz GitHub'da <a href="https://github.com/TA3HRJ/coax-cable-database/issues/new/choose" rel="noopener">bir issue açabilirsiniz</a>.</p>`,
     foot_method: "Yöntem ve kaynaklar",
+    foot_legal: "Marka ve ürün adları sahiplerinindir; bu site hiçbir üreticiyle bağlantılı değildir. Değerler bilgi amaçlıdır, garanti verilmez.",
+    foot_legal_link: "Ticari markalar ve sorumluluk reddi",
+    legal_body: `<h2>Ticari markalar</h2>
+<p>Bu sitede geçen marka, ürün ve şirket adları sahiplerinin ticari markaları ya da tescilli ticari markalarıdır ve yalnızca ürünleri tanımlamak için kullanılır. Aşağıdakiler, sahiplerinin kendi belgelerinde tescilli (®) olarak gösterdiği adlardır:</p>
+<ul class="tm-list">
+<li>LMR®, Times Microwave Systems® — Times Microwave Systems (bir Amphenol şirketi)</li>
+<li>HELIAX®, CommScope® — CommScope, Inc.</li>
+<li>CELLFLEX® — Radio Frequency Systems (RFS)</li>
+<li>Ecoflex®, Aircell® — SSB-Electronic GmbH</li>
+<li>Duofoil®, Duobond® — Belden Inc.</li>
+<li>Messi &amp; Paoloni® — Messi &amp; Paoloni S.r.l.</li>
+<li>Fairview Microwave® — Infinite Electronics, Inc.</li>
+</ul>
+<p>Belden, Amphenol, Andrew, RFS, Ericsson, Harbour Industries, Davis RF, Bury-Flex, Reçber, Westflex, Hyperflex, Ultraflex, Airborne, H155, H1000, H2000 ve diğer adlar da sahiplerinin ticari markaları ya da tescilli ticari markaları olabilir. RG-58, RG-213 gibi RG adları askerî standart tanımlarıdır, marka değildir.</p>
+<p>Bu proje adı geçen üreticilerin hiçbiriyle bağlantılı değildir; onlar tarafından desteklenmez, onaylanmaz ya da sponsor edilmez. Veri lisansı (CC BY 4.0) bu adlar üzerinde herhangi bir hak vermez.</p>
+<h2>Sorumluluk reddi</h2>
+<ul>
+<li>Değerler üreticilerin yayımladığı belgelerden derlenmiştir. Aktarım hatası olabilir ve üreticiler özellikleri haber vermeden değiştirebilir. Kablo seçmeden ya da satın almadan önce güncel datasheet'i üreticiden doğrulayın.</li>
+<li>Hesaplar idealize edilmiş bir modeldir. Konnektör kaybı, kurulum, yaşlanma, nem ve su girişi, üretim toleransı hesaba katılmaz. Güç sınırları üreticinin belirttiği koşullar için geçerlidir.</li>
+<li>Kablo kesit çizimleri verideki malzeme ve çaplardan üretilen temsilî görsellerdir; ürün fotoğrafı değildir.</li>
+<li>Datasheet bağlantıları üçüncü taraf sitelere gider; içeriklerinden bu site sorumlu değildir.</li>
+<li>Bilgiler "olduğu gibi" sunulur. Doğruluk, eksiksizlik ya da belirli bir amaca uygunluk konusunda hiçbir garanti verilmez ve kullanımdan doğabilecek zararlardan sorumluluk kabul edilmez.</li>
+</ul>`,
     none_selected: "henüz kablo seçilmedi",
     foot: (v, n, s) => `Veri sürümü ${v} · ${n} kablo · ${s} kaynak belge`,
     foot_license: "Kod MIT · veri CC BY 4.0",
@@ -181,6 +204,29 @@ export const STRINGS = {
 <p>The database can be downloaded from <a href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub</a> as an Excel workbook, SQLite and CSV. The compiled data is CC BY 4.0, the code MIT. Manufacturer datasheets belong to their owners and are not redistributed here; only their titles and URLs are listed.</p>
 <p>If you spot a wrong value or a missing cable, please <a href="https://github.com/TA3HRJ/coax-cable-database/issues/new/choose" rel="noopener">open an issue on GitHub</a>.</p>`,
     foot_method: "Method and sources",
+    foot_legal: "Brand and product names belong to their owners; this site is not affiliated with any manufacturer. Values are for information only, without warranty.",
+    foot_legal_link: "Trademarks and disclaimer",
+    legal_body: `<h2>Trademarks</h2>
+<p>Brand, product and company names on this site are trademarks or registered trademarks of their respective owners and are used only to identify the products. The following are shown as registered (®) in their owners' own documents:</p>
+<ul class="tm-list">
+<li>LMR®, Times Microwave Systems® — Times Microwave Systems (an Amphenol company)</li>
+<li>HELIAX®, CommScope® — CommScope, Inc.</li>
+<li>CELLFLEX® — Radio Frequency Systems (RFS)</li>
+<li>Ecoflex®, Aircell® — SSB-Electronic GmbH</li>
+<li>Duofoil®, Duobond® — Belden Inc.</li>
+<li>Messi &amp; Paoloni® — Messi &amp; Paoloni S.r.l.</li>
+<li>Fairview Microwave® — Infinite Electronics, Inc.</li>
+</ul>
+<p>Belden, Amphenol, Andrew, RFS, Ericsson, Harbour Industries, Davis RF, Bury-Flex, Reçber, Westflex, Hyperflex, Ultraflex, Airborne, H155, H1000, H2000 and other names may also be trademarks or registered trademarks of their owners. RG designations such as RG-58 and RG-213 are military standard designations, not brands.</p>
+<p>This project is not affiliated with, endorsed, approved or sponsored by any of the manufacturers named. The data license (CC BY 4.0) grants no rights in these names.</p>
+<h2>Disclaimer</h2>
+<ul>
+<li>Values are compiled from documents published by the manufacturers. Transcription errors are possible and manufacturers may change specifications without notice. Check the current datasheet with the manufacturer before choosing or buying a cable.</li>
+<li>Calculations are an idealised model. Connector loss, installation, ageing, moisture and water ingress and manufacturing tolerance are not included. Power ratings apply under the conditions stated by the manufacturer.</li>
+<li>Cable cross-section drawings are representative images generated from the materials and diameters in the data; they are not product photos.</li>
+<li>Datasheet links lead to third-party sites; this site is not responsible for their content.</li>
+<li>Information is provided "as is", without any warranty of accuracy, completeness or fitness for a particular purpose, and no liability is accepted for any damage arising from its use.</li>
+</ul>`,
     none_selected: "no cables selected yet",
     foot: (v, n, s) => `Data version ${v} · ${n} cables · ${s} source documents`,
     foot_license: "Code MIT · data CC BY 4.0",

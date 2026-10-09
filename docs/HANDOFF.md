@@ -21,6 +21,8 @@
 
 **Kablo çizimleri:** `site/js/cableart.js` her kablonun kesitini verideki metinlerden (icm/icc/dm/sh/jk) ve çaplardan (od/dd/icd; eksikse Z ve VF ile tahmin) kademeli eğik SVG olarak üretir. Popüler kartlarında sağ üstte (dekoratif, `aria-hidden`), kablo detayında "Yapı" panelinde numaralı katmanlar + açıklama listesi. Kart çiziminde yükseklik gerçek çapla logaritmik ölçeklenir. Malzeme eşlemesi metin desenleriyle (ör. /oluklu/ -> oluklu bakır, /kalaylı|gümüş/ -> gümüş renk); yeni bir malzeme yazımı eklenirse `layers()` desenlerini kontrol et. SW cache v4.
 
+**Ticari markalar ve sorumluluk reddi:** Yöntem sayfasının sonunda (`#/method?s=legal`); her sayfanın alt bilgisinde kısa not + bağlantı; README ve LICENSE-DATA.md'de de var. ® yalnızca sahibinin kendi belgesinde ® gösterdiği adlarda (kaynak PDF taraması + Times Microwave trademark politikası): LMR, Times Microwave Systems, HELIAX, CommScope, CELLFLEX, Ecoflex, Aircell, Duofoil, Duobond, Messi & Paoloni, Fairview Microwave. İşaret yalnızca kablo detayı başlığında ve ekran satırında gösterilir (`util.js` `MARKS`/`markHtml`); veri dosyalarında yok. Belden, Ericsson vb. için kanıt bulunamadı, genel "olabilir" cümlesiyle kapsanıyor. Excel README sayfasına henüz eklenmedi. SW cache v5.
+
 ## 2026-10-09 — M4 tamam (Karşılaştır, Tümü, Kablo detayı, Yöntem)
 
 - `site/js/chart.js`: kütüphanesiz log-log SVG grafik; dataviz referans paletinin 8 kategorik slotu (açık/koyu ayrı,

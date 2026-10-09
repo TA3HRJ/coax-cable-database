@@ -20,4 +20,10 @@ export function renderMethod(view, ctx) {
   const data = el("div", "panel prose");
   data.innerHTML = t("data_body");
   view.append(data);
+
+  const legal = el("div", "panel prose");
+  legal.id = "legal";
+  legal.innerHTML = t("legal_body");
+  view.append(legal);
+  if (ctx.params.get("s") === "legal") requestAnimationFrame(() => legal.scrollIntoView({ block: "start" }));
 }

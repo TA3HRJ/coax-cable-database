@@ -93,6 +93,20 @@ Without Node, serve the repo root (`python -m http.server`) and open `/tests/par
   Ecoflex 10, Aircell 7 and Aircell 5 are about 5 % lower.
 - Connector and splice losses are not included.
 
+## Trademarks and disclaimer
+
+LMR® and Times Microwave Systems® are registered trademarks of Times Microwave Systems; HELIAX® and CommScope® of
+CommScope, Inc.; CELLFLEX® of Radio Frequency Systems; Ecoflex® and Aircell® of SSB-Electronic GmbH; Duofoil® and
+Duobond® of Belden Inc.; Messi & Paoloni® of Messi & Paoloni S.r.l.; Fairview Microwave® of Infinite Electronics,
+Inc. Other brand and product names (Belden, Amphenol, Andrew, RFS, Ericsson, Reçber, Westflex, Hyperflex, Ultraflex,
+Airborne, H155, H1000, H2000, Bury-Flex …) may be trademarks or registered trademarks of their owners. Names are used
+only to identify products. This project is not affiliated with, endorsed or sponsored by any manufacturer.
+
+The data is compiled from manufacturers' published documents and provided **as is**, without warranty of accuracy,
+completeness or fitness for a particular purpose. Check the current datasheet with the manufacturer before choosing
+or buying a cable. The calculations are an idealised model (no connector loss, installation, ageing or water
+ingress). The cable drawings on the site are representative, not product photos.
+
 ## License
 
 Code: MIT ([LICENSE](LICENSE)). Compiled data: CC BY 4.0 ([LICENSE-DATA.md](LICENSE-DATA.md)) — manufacturer
@@ -106,3 +120,7 @@ Amatör telsizcilikte kullanılan 65 koaksiyel kablonun zayıflama, güç ve yap
 belgesine bağlı. Ana dosya `TA3HX_Coax_Database.xlsx` (Ham_Bands, Hesaplayıcı, Grafik ve veri tabloları),
 program için `export/coax.sqlite` ve `export/csv/`. Hesap yöntemi: datasheet noktaları arasında log-log
 interpolasyon. Web arayüzü planı: [docs/PLAN.md](docs/PLAN.md).
+
+Marka ve ürün adları sahiplerinin (tescilli) ticari markalarıdır ve yalnızca ürünü tanımlamak için kullanılır; proje
+hiçbir üreticiyle bağlantılı değildir. Veriler "olduğu gibi" sunulur, garanti verilmez; seçimden önce güncel
+datasheet'i üreticiden doğrulayın.

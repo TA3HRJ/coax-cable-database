@@ -2,7 +2,7 @@
 import { t, lang, fmt } from "../i18n.js";
 import * as coax from "../coax.js";
 import { logLogChart, curve } from "../chart.js";
-import { el, esc, fmtF, fmtA, fmtW, indicators, classLabel } from "../util.js";
+import { el, esc, fmtF, fmtA, fmtW, indicators, classLabel, markHtml } from "../util.js";
 import { cableSvg, layers } from "../cableart.js";
 
 // Gösterilecek özellikler: [json anahtarı, etiket anahtarı, biçim]
@@ -32,7 +32,7 @@ export function renderCable(view, ctx, id) {
   head.innerHTML =
     `<div class="c-class">${esc(classLabel(db, c))} · ${fmt(c.od, 1)} mm · ${c.z} Ω${c.std ? ` <span class="tag">${t("standard")}</span>` : ""}` +
     `${c.val === "max" ? ` <span class="tag warn-tag" title="${esc(t("ind_max_title"))}">${t("max_values")}</span>` : ""}</div>` +
-    `<h1>${esc(c.s)}</h1><p>${esc(c.n)}</p>`;
+    `<h1>${markHtml(c.s)}</h1><p>${markHtml(c.n)}</p>`;
   const actions = el("div", "c-actions top-actions");
   const calc = el("a", "btn primary", `${t("calc")} →`);
   calc.href = `#/calc?c=${encodeURIComponent(c.id)}`;
@@ -90,7 +90,7 @@ export function renderCable(view, ctx, id) {
   specs.append(el("h2", "h2", t("specs_title")));
   const dl = el("dl", "kv specs");
   dl.innerHTML = SPECS.filter(([k]) => c[k] != null && c[k] !== "")
-    .map(([k, lab, f]) => `<dt>${t("f_" + lab)}</dt><dd>${f ? f(c) : esc(c[k])}</dd>`).join("");
+    .map(([k, lab, f]) => `<dt>${t("f_" + lab)}</dt><dd>${f ? f(c) : k === "sh" ? markHtml(c[k]) : esc(c[k])}</dd>`).join("");
   specs.append(dl);
   if (c.note) specs.append(el("p", "note-box", `<b>${t("notes")}:</b> ${esc(c.note)}`));
   if (lang === "en") specs.append(el("p", "muted", t("data_lang_note")));
