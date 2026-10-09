@@ -75,19 +75,29 @@ export function renderCompare(view, ctx) {
     chips.sync(st.f);
     ctx.setParams({ c: st.ids.join(","), f: st.f, L: round(st.L, 3), P: st.P, s: st.s === 1 ? null : st.s });
     const cabs = st.ids.map((id) => byId[id]);
-    // grafik
-    chartBox.replaceChildren(el("h2", "h2", t("cmp_chart")));
-    if (cabs.length) {
-      const series = cabs.map((c, i) => ({ label: c.s, i, pts: curve(c, coax.attenuation), est: (f) => coax.isExtrapolated(c, f) }));
-      chartBox.append(logLogChart(series, {
-        xmin: 1, xmax: 10000, unit: "dB/100 m", fmt: fmtA, fmtX: (f, long) => fmtF(f, long), ariaLabel: t("cmp_chart"),
-      }));
-    } else chartBox.append(el("p", "empty", t("none_selected")));
-    // tablo
     const rows = cabs.map((c, i) => ({ c, i, r: coax.isShown(c, st.f) ? coax.lineCalc(c, { f: st.f, lengthM: st.L, pInW: st.P, swr: st.s }) : null }));
     const best = Math.min(...rows.filter((x) => x.r).map((x) => x.r.totalLossDb));
     rows.sort((a, b) => (a.r ? a.r.totalLossDb : 1e9) - (b.r ? b.r.totalLossDb : 1e9));
-    tableBox.replaceChildren(el("h2", "h2", t("cmp_table", fmtF(st.f, true), fmt(st.L, st.L < 10 ? 1 : 0), fmtW(st.P), fmt(st.s, 1))));
+    const title = t("cmp_table", fmtF(st.f, true), fmt(st.L, st.L < 10 ? 1 : 0), fmtW(st.P), fmt(st.s, 1));
+    // grafik: seçili frekansta sabit işaret + sonuç kutusu (tabloyla aynı sıra ve değerler)
+    chartBox.replaceChildren(el("h2", "h2", t("cmp_chart")));
+    if (cabs.length) {
+      const series = cabs.map((c, i) => ({ label: c.s, i, pts: curve(c, coax.attenuation), est: (f) => coax.isExtrapolated(c, f) }));
+      const pin = {
+        f: st.f, title,
+        rows: rows.map(({ c, i, r }) => ({
+          i, label: c.s, y: r ? r.attDb100m : null,
+          html: r ? `<b>${fmt(r.totalLossDb, 2)} dB</b>${coax.isExtrapolated(c, st.f) ? " ~" : ""} · ${fmtW(r.pOutW)} W` : t("no_data"),
+        })),
+        more: t("pin_more"),
+        onMore: () => tableBox.scrollIntoView({ behavior: "smooth", block: "start" }),
+      };
+      chartBox.append(logLogChart(series, {
+        xmin: 1, xmax: 10000, unit: "dB/100 m", fmt: fmtA, fmtX: (f, long) => fmtF(f, long), ariaLabel: t("cmp_chart"), pin,
+      }));
+    } else chartBox.append(el("p", "empty", t("none_selected")));
+    // tablo
+    tableBox.replaceChildren(el("h2", "h2", title));
     const tb = el("table", "tbl");
     tb.innerHTML = `<thead><tr><th>${t("cable")}</th><th class="r">dB/100 m</th><th class="r">${t("total_loss")}</th>` +
       `<th class="r">${t("power_at_antenna")}</th><th class="r">${t("vs_best")}</th><th class="r">${t("max_power")}</th></tr></thead>`;

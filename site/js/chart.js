@@ -12,7 +12,8 @@ export function seriesColor(i) {
 
 /**
  * series: [{ label, i (renk sırası), pts: [[f, y], ...], markers?: [[f, y], ...], est?: (f) => bool }]
- * opts: { xmin, xmax, unit, fmt(y), fmtX(f), height }
+ * opts: { xmin, xmax, unit, fmt(y), fmtX(f), height, pin? }
+ * pin: { f, title, rows: [{ i, label, y (çizgideki değer), html (kutudaki sonuç) }], more?, onMore? }
  */
 export function logLogChart(series, opts) {
   const W = 760, H = opts.height || 380, M = { l: 52, r: series.length <= 4 ? 96 : 16, t: 12, b: 34 };
@@ -31,7 +32,11 @@ export function logLogChart(series, opts) {
   svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
   svg.setAttribute("role", "img");
   svg.setAttribute("aria-label", opts.ariaLabel || "");
-  wrap.append(svg);
+  // çizim alanı ayrı kutuda: sabit işaret kutusunun yüzde konumu açıklama (legend) yüksekliğinden etkilenmesin
+  const plot = document.createElement("div");
+  plot.className = "plot";
+  plot.append(svg);
+  wrap.append(plot);
 
   // ızgara: on katlar belirgin, 2 ve 5 silik
   const grid = g(svg, "grid");
@@ -73,6 +78,40 @@ export function logLogChart(series, opts) {
       svg.append(c);
     }
   });
+
+  // sabit işaret (Karşılaştır): seçili frekansta dikey çizgi, eğrilerde nokta ve sonuç kutusu.
+  // Frekans, uzunluk, güç ve SWR değişince grafikte de görünür bir şey değişsin diye (tablo sayfanın altında kalabiliyor).
+  const pin = opts.pin;
+  let pinBox = null;
+  if (pin && pin.f >= opts.xmin && pin.f <= opts.xmax) {
+    const px = X(pin.f);
+    line(svg, px, M.t, px, M.t + ih, "pin-line");
+    for (const r of pin.rows) {
+      if (!(r.y >= ymin && r.y <= ymax)) continue;
+      const s = series.find((x) => x.i === r.i); // eğrinin çizilmediği frekansta nokta koyma
+      if (s && s.pts.length && (pin.f < s.pts[0][0] || pin.f > s.pts[s.pts.length - 1][0])) continue;
+      const c = document.createElementNS(NS, "circle");
+      c.setAttribute("cx", px);
+      c.setAttribute("cy", Y(r.y));
+      c.setAttribute("r", 5);
+      c.setAttribute("class", "pin-dot");
+      c.style.fill = seriesColor(r.i);
+      svg.append(c);
+    }
+    const box = document.createElement("div");
+    box.className = "pin-box";
+    box.innerHTML = `<b>${esc(pin.title)}</b>` + pin.rows.map((r) =>
+      `<div><i style="background:${seriesColor(r.i)}"></i>${esc(r.label)}<span>${r.html}</span></div>`).join("") +
+      (pin.more ? `<button type="button" class="pin-more">${esc(pin.more)}</button>` : "");
+    // Üst kenarda, denetimlerin hemen altında görünsün. Eğriler sol alttan sağ üste çıktığı için çizginin sol üstü
+    // genellikle boştur; çizgi çok soldaysa kutu sağına geçer. Fareyle gezinirken gizlenir (değer kutusu onun yerini alır).
+    const toLeft = px / W > 0.4;
+    box.style[toLeft ? "right" : "left"] = `${toLeft ? (1 - px / W) * 100 + 1.2 : (px / W) * 100 + 1.2}%`;
+    box.style.top = `${(M.t / H) * 100 + 2}%`;
+    pinBox = box;
+    if (pin.onMore) box.querySelector(".pin-more")?.addEventListener("click", pin.onMore);
+    plot.append(box);
+  }
 
   // ≤4 seride sağ uçta doğrudan etiket; çakışmasın diye dikeyde en az 14px aralıkla itilir
   if (series.length <= 4) {
@@ -126,11 +165,12 @@ export function logLogChart(series, opts) {
     tip.innerHTML = `<b>${opts.fmtX(f, true)}</b>` + rows.map((o) =>
       `<div><i style="background:${seriesColor(o.s.i)}"></i>${esc(o.s.label)}<span>${opts.fmt(o.y)}${o.s.est && o.s.est(f) ? " ~" : ""}</span></div>`).join("");
     tip.hidden = false;
+    if (pinBox) pinBox.hidden = true;
     const left = ((px / W) * r.width);
     tip.style.left = `${Math.min(left + 12, r.width - tip.offsetWidth - 4)}px`;
     tip.style.top = `${8}px`;
   };
-  const leave = () => { cross.style.display = "none"; tip.hidden = true; };
+  const leave = () => { cross.style.display = "none"; tip.hidden = true; if (pinBox) pinBox.hidden = false; };
   svg.addEventListener("pointermove", move);
   svg.addEventListener("pointerdown", move);
   svg.addEventListener("pointerleave", leave);

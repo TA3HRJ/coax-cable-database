@@ -175,7 +175,8 @@ sup.tm{font-size:.55em;font-weight:400;margin-left:1px;line-height:0}
 
 /* ---------- grafik */
 .chart{position:relative;margin-top:6px}
-.chart svg{width:100%;height:auto;display:block;touch-action:pan-y}
+.chart .plot{position:relative}
+.chart .plot>svg{width:100%;height:auto;display:block;touch-action:pan-y}
 .chart .g-major{stroke:var(--grid);stroke-width:1}
 .chart .g-minor{stroke:var(--grid2);stroke-width:1}
 .chart .ax{fill:var(--dim);font-size:11px;font-variant-numeric:tabular-nums}
@@ -184,6 +185,22 @@ sup.tm{font-size:.55em;font-weight:400;margin-left:1px;line-height:0}
 .chart .s-mark{stroke:var(--card);stroke-width:2}
 .chart .s-label{fill:var(--fg2);font-size:12px}
 .chart .cross{stroke:var(--dim);stroke-width:1;stroke-dasharray:3 3}
+/* Karşılaştır: seçili frekans işareti ve sonuç kutusu */
+.chart .pin-line{stroke:var(--accent);stroke-width:1.5}
+.chart .pin-dot{stroke:var(--card);stroke-width:2}
+.pin-box{position:absolute;background:var(--view);border:1px solid var(--accent);border-radius:8px;padding:7px 9px;font-size:12.5px;
+  box-shadow:0 4px 14px rgba(0,0,0,.14);min-width:190px;max-width:62%;z-index:2}
+.pin-box b{font-weight:600}
+.pin-box>b{display:block;margin-bottom:3px}
+.pin-box div{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.pin-box i{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none}
+.pin-box span{margin-left:auto;padding-left:10px;font-variant-numeric:tabular-nums}
+.pin-more{margin-top:5px;padding:0;border:0;background:none;color:var(--link);font:inherit;font-size:12px;cursor:pointer}
+.pin-more:hover{text-decoration:underline}
+@media (prefers-reduced-motion:no-preference){.pin-box{animation:pin-in .35s ease-out}}
+@keyframes pin-in{from{box-shadow:0 0 0 3px var(--accent-soft)}}
+/* dar ekranda kutu grafiğin altına iner, eğrileri kapatmaz */
+@media (max-width:640px){.pin-box{position:static;max-width:none;margin-top:8px;box-shadow:none}}
 .legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:13px;color:var(--fg2)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .tip{position:absolute;pointer-events:none;background:var(--view);border:1px solid var(--border2);border-radius:8px;padding:7px 9px;font-size:12.5px;box-shadow:0 4px 14px rgba(0,0,0,.18);min-width:170px;z-index:3}
