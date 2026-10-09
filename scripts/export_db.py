@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 TA3HX_Coax_Database.xlsx -> export/csv/*.csv + export/coax.sqlite
-                          + docs/data/cables.min.json (web sitesi verisi)
+                          + site/data/cables.min.json (web sitesi verisi)
                           + tests/fixtures/excel_calculator.json (eşlik testi için Excel hesaplayıcı sonuçları)
                           + kaynaklar/README.md (kaynak dizini)
 
@@ -28,7 +28,7 @@ SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "TA3HX_Coax_Datab
 OUT = os.path.join(ROOT, "export")
 CSV_DIR = os.path.join(OUT, "csv")
 DB = os.path.join(OUT, "coax.sqlite")
-WEB_JSON = os.path.join(ROOT, "docs", "data", "cables.min.json")
+WEB_JSON = os.path.join(ROOT, "site", "data", "cables.min.json")
 FIXTURE = os.path.join(ROOT, "tests", "fixtures", "excel_calculator.json")
 SOURCES_MD = os.path.join(ROOT, "kaynaklar", "README.md")
 

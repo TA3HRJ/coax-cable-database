@@ -17,8 +17,8 @@ scripts/gen_points.py       # kaynaklar/*.pdf -> scripts/points_extra.py (otomat
 scripts/export_db.py        # xlsx -> export/coax.sqlite + export/csv/ (önce sanitize_xlsx ile üst veriyi temizler)
 data/legacy/                # orijinal elle tablo, üst verisi temizlenmiş kopya (build bunu okur)
 kaynaklar/                  # kaynak dizini; PDF'ler .gitignore'da (telif), .txt özetler repoda
-docs/js/coax.js             # hesap çekirdeği (DOM'suz) - Excel yöntemiyle birebir aynı olmalı
-docs/data/cables.min.json   # site verisi (export_db.py üretir)
+site/js/coax.js             # hesap çekirdeği (DOM'suz) - Excel yöntemiyle birebir aynı olmalı
+site/data/cables.min.json   # site verisi (export_db.py üretir)
 tests/                      # eşlik testleri; fixtures/excel_calculator.json export_db.py ile üretilir
 ```
 

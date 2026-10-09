@@ -24,11 +24,11 @@ and tested against the Excel workbook.
 
 ```
 TA3HX_Coax_Database.xlsx       # master workbook (Excel) - Ham_Bands, Calculator, Graph, data tables
-docs/
-├── data/cables.min.json        # compact data the web site loads (generated)
+site/                           # static web site (GitHub Pages)
+├── data/cables.min.json        # compact data the site loads (generated)
 ├── js/coax.js                  # calculation core (same method as the workbook, no DOM)
-├── PLAN.md                     # web interface plan
-└── HANDOFF.md                  # session handoff notes
+docs/
+└── PLAN.md                     # web interface plan
 export/
 ├── coax.sqlite                 # SQLite with foreign keys
 ├── csv/*.csv                   # UTF-8, comma separated, decimal point

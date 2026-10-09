@@ -11,13 +11,13 @@ import sqlite3
 import unittest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-WEB = os.path.join(ROOT, "docs", "data", "cables.min.json")
+WEB = os.path.join(ROOT, "site", "data", "cables.min.json")
 DB = os.path.join(ROOT, "export", "coax.sqlite")
 HAM = os.path.join(ROOT, "export", "csv", "ham_bands.csv")
 
 
 def interp(points, f):
-    """docs/js/coax.js interpLogLog ile aynı."""
+    """site/js/coax.js interpLogLog ile aynı."""
     k = -1
     for j, p in enumerate(points):
         if p[0] <= f:

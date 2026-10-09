@@ -15,12 +15,12 @@
 <p>Repo kökü bir HTTP sunucusuyla açılmalı (ör. <code>python -m http.server</code>), sayfa: <code>/tests/parity.html</code>.</p>
 <pre id="out">çalışıyor…</pre>
 <script type="module">
-  import * as coax from "../docs/js/coax.js";
+  import * as coax from "../site/js/coax.js";
   import { runParity } from "./parity.cases.mjs";
   const out = document.getElementById("out");
   try {
     const [db, hamCsv, fixture] = await Promise.all([
-      fetch("../docs/data/cables.min.json").then((r) => r.json()),
+      fetch("../site/data/cables.min.json").then((r) => r.json()),
       fetch("../export/csv/ham_bands.csv").then((r) => r.text()),
       fetch("./fixtures/excel_calculator.json").then((r) => r.json()),
     ]);
