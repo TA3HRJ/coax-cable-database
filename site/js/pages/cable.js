@@ -3,6 +3,7 @@ import { t, lang, fmt } from "../i18n.js";
 import * as coax from "../coax.js";
 import { logLogChart, curve } from "../chart.js";
 import { el, esc, fmtF, fmtA, fmtW, indicators, classLabel } from "../util.js";
+import { cableSvg, layers } from "../cableart.js";
 
 // Gösterilecek özellikler: [json anahtarı, etiket anahtarı, biçim]
 const SPECS = [
@@ -64,6 +65,26 @@ export function renderCable(view, ctx, id) {
   }));
   chart.append(el("p", "muted", t("curve_note", c.a.length, fmtF(c.fa, true), fmtF(c.fb, true))));
 
+  // yapı: verideki katmanlardan çizim + numaralı açıklama
+  const art = el("figure", "panel art-panel");
+  art.append(el("h2", "h2", t("structure_title")));
+  const Ls = layers(c);
+  const dia = (v, est) => (v ? ` · Ø ${fmt(v, 2)} mm${est ? ` (${t("estimated")})` : ""}` : "");
+  const legend = [
+    [t("part_jacket"), [c.jk], c.od],
+    [t("part_shield"), [c.sh], null],
+    [t("part_dielectric"), [c.dm], c.dd, Ls.est.dd],
+    [t("part_conductor"), [c.icm, c.icc], c.icd, Ls.est.icd],
+  ];
+  const fig = el("div", "art-fig");
+  fig.innerHTML = cableSvg(c, { w: 360, h: 132, fit: false, numbered: true, span: 0.66 });
+  fig.firstChild.setAttribute("role", "img");
+  fig.firstChild.setAttribute("aria-label", t("structure_title"));
+  const ol = el("ol", "art-legend");
+  ol.innerHTML = legend.map(([lab, txt, d, est]) =>
+    `<li><b>${lab}</b> ${esc(txt.filter(Boolean).join(", ") || "–")}${dia(d, est)}</li>`).join("");
+  art.append(fig, ol, el("figcaption", "muted", t("structure_note")));
+
   // özellikler
   const specs = el("div", "panel");
   specs.append(el("h2", "h2", t("specs_title")));
@@ -107,7 +128,7 @@ export function renderCable(view, ctx, id) {
   const left = el("div", "col");
   const right = el("div", "col");
   left.append(bands, chart, pts);
-  right.append(specs, srcs, simBox);
+  right.append(art, specs, srcs, simBox);
   grid.append(left, right);
   view.append(grid);
 

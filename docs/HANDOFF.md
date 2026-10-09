@@ -19,6 +19,8 @@
 
 **Sonra (kullanıcı isteği):** ft birimi seçiliyken Popüler kartlarda ve Hesapla alt satırında çap, sınıf etiketi ve bükülme yarıçapı inç gösterilir (`util.js` `fmtMm`, `sizeClassLabel`; veri mm kalır, dönüşüm yalnızca görünümde). Birim değişince kartların çap/bükülme kısmı `paintDims` ile yeniden yazılır; Popüler → Hesapla bağlantısı `u=ft` taşır. Kablo detayı ve Tümü sayfalarında birim seçici yok, orada mm kalıyor. SW cache v3.
 
+**Kablo çizimleri:** `site/js/cableart.js` her kablonun kesitini verideki metinlerden (icm/icc/dm/sh/jk) ve çaplardan (od/dd/icd; eksikse Z ve VF ile tahmin) kademeli eğik SVG olarak üretir. Popüler kartlarında sağ üstte (dekoratif, `aria-hidden`), kablo detayında "Yapı" panelinde numaralı katmanlar + açıklama listesi. Kart çiziminde yükseklik gerçek çapla logaritmik ölçeklenir. Malzeme eşlemesi metin desenleriyle (ör. /oluklu/ -> oluklu bakır, /kalaylı|gümüş/ -> gümüş renk); yeni bir malzeme yazımı eklenirse `layers()` desenlerini kontrol et. SW cache v4.
+
 ## 2026-10-09 — M4 tamam (Karşılaştır, Tümü, Kablo detayı, Yöntem)
 
 - `site/js/chart.js`: kütüphanesiz log-log SVG grafik; dataviz referans paletinin 8 kategorik slotu (açık/koyu ayrı,

@@ -3,6 +3,7 @@
 import { t, lang, fmt } from "../i18n.js";
 import * as coax from "../coax.js";
 import { fmtMm, sizeClassLabel } from "../util.js";
+import { cableSvg } from "../cableart.js";
 
 const FT = coax.FT_PER_M;
 
@@ -145,7 +146,9 @@ export function renderPopular(view, ctx) {
       a.title = `${s.p} — ${s.t}`;
       actions.append(a);
     }
-    root.append(cls, title, sub, value, bar, line, meta, actions);
+    const art = el("div", "c-art");
+    art.innerHTML = cableSvg(c);
+    root.append(art, cls, title, sub, value, bar, line, meta, actions);
     const x = { c, root, cls, meta, value, fill, bar, line, calc };
     paintDims(x);
     return x;
