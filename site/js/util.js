@@ -1,6 +1,11 @@
 // Sayfaların ortak yardımcıları.
 import { t, lang, fmt } from "./i18n.js";
 import * as coax from "./coax.js";
+import { dataEn } from "./datatr.js";
+
+/** Kablonun uzun adı ve üreticisi arayüz dilinde (veri Türkçe; ör. "köpük PE" -> "foam PE"). */
+export const cname = (c) => (lang === "en" ? dataEn(c.n) : c.n);
+export const cmfr = (m) => (lang === "en" ? dataEn(m) : m);
 
 export function el(tag, cls, html) {
   const e = document.createElement(tag);
@@ -92,7 +97,7 @@ export function cableSelect(db, value, exclude = []) {
       if (exclude.includes(c.id)) continue;
       const o = document.createElement("option");
       o.value = c.id;
-      o.textContent = `${c.s} — ${c.n}${c.z !== 50 ? ` (${c.z} Ω)` : ""}`;
+      o.textContent = `${c.s} — ${cname(c)}${c.z !== 50 ? ` (${c.z} Ω)` : ""}`;
       g.append(o);
     }
     if (g.children.length) sel.append(g);

@@ -99,7 +99,6 @@ main:focus{outline:none}
 .c-art{position:absolute;top:22px;right:0;width:min(150px,46%);pointer-events:none}
 .c-art svg{display:block;width:100%;height:auto}
 .card .c-title,.card .c-sub{max-width:calc(100% - min(132px,40%))}
-.card.is-std{border-left:3px solid var(--dim)}
 .c-class{font-size:12px;color:var(--dim);display:flex;gap:6px;align-items:center}
 .tag{font-size:11px;border:1px solid var(--border);border-radius:5px;padding:0 5px;color:var(--fg2)}
 .c-title{font-size:19px;font-weight:700;line-height:1.15;letter-spacing:-.01em;color:var(--fg)}

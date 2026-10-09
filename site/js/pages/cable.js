@@ -2,8 +2,13 @@
 import { t, lang, fmt } from "../i18n.js";
 import * as coax from "../coax.js";
 import { logLogChart, curve } from "../chart.js";
-import { el, esc, fmtF, fmtA, fmtW, indicators, classLabel, markHtml } from "../util.js";
+import { el, esc, fmtF, fmtA, fmtW, indicators, classLabel, markHtml, cname } from "../util.js";
 import { cableSvg, layers } from "../cableart.js";
+import { dataEn } from "../datatr.js";
+
+// İngilizce arayüzde çevrilen veri alanları (notlar ve kaynak başlıkları Türkçe/özgün kalır)
+const TR_FIELDS = new Set(["icm", "icc", "dm", "sh", "jk", "out", "bur", "fire", "fam", "vn", "m", "con"]);
+const dt = (k, v) => (lang === "en" && TR_FIELDS.has(k) ? dataEn(v) : v);
 
 // Gösterilecek özellikler: [json anahtarı, etiket anahtarı, biçim]
 const SPECS = [
@@ -11,10 +16,10 @@ const SPECS = [
   ["od", "od", (c) => `${fmt(c.od, 2)} mm`], ["vf", "velocity_factor", (c) => fmt(c.vf, 2)], ["cap", "capacitance", (c) => `${fmt(c.cap, 1)} pF/m`],
   ["ind", "inductance", (c) => `${fmt(c.ind, 3)} µH/m`], ["icm", "inner_material"], ["icc", "inner_construction"],
   ["icd", "inner_od", (c) => `${fmt(c.icd, 2)} mm`], ["dm", "dielectric"], ["dd", "dielectric_od", (c) => `${fmt(c.dd, 2)} mm`],
-  ["sh", "shield"], ["bc", "braid_coverage", (c) => `%${c.bc}`], ["jk", "jacket"], ["se", "shielding", (c) => `${c.se} dB`],
+  ["sh", "shield"], ["bc", "braid_coverage", (c) => (lang === "tr" ? `%${c.bc}` : `${c.bc}%`)], ["jk", "jacket"], ["se", "shielding", (c) => `${c.se} dB`],
   ["dci", "dcr_inner", (c) => `${fmt(c.dci, 2)} Ω/km`], ["dco", "dcr_outer", (c) => `${fmt(c.dco, 2)} Ω/km`],
   ["fmax", "fmax", (c) => fmtF(c.fmax, true)], ["pk", "peak_power", (c) => `${fmt(c.pk, c.pk < 10 ? 1 : 0)} kW`],
-  ["v", "voltage", (c) => `${fmt(c.v, 0)} V${c.vn ? " — " + c.vn : ""}`],
+  ["v", "voltage", (c) => `${fmt(c.v, 0)} V${c.vn ? " — " + esc(dt("vn", c.vn)) : ""}`],
   ["br1", "bend_single", (c) => `${fmt(c.br1, 1)} mm`], ["br2", "bend_repeated", (c) => `${fmt(c.br2, 1)} mm`],
   ["w", "weight", (c) => `${fmt(c.w, 1)} kg/km`], ["ten", "tensile", (c) => `${fmt(c.ten, 1)} kg`],
   ["tmin", "temperature", (c) => `${c.tmin} … ${c.tmax} °C`], ["out", "outdoor"], ["bur", "burial"], ["fire", "fire"], ["con", "connectors"],
@@ -32,7 +37,7 @@ export function renderCable(view, ctx, id) {
   head.innerHTML =
     `<div class="c-class">${esc(classLabel(db, c))} · ${fmt(c.od, 1)} mm · ${c.z} Ω${c.std ? ` <span class="tag">${t("standard")}</span>` : ""}` +
     `${c.val === "max" ? ` <span class="tag warn-tag" title="${esc(t("ind_max_title"))}">${t("max_values")}</span>` : ""}</div>` +
-    `<h1>${markHtml(c.s)}</h1><p>${markHtml(c.n)}</p>`;
+    `<h1>${markHtml(c.s)}</h1><p>${markHtml(cname(c))}</p>`;
   const actions = el("div", "c-actions top-actions");
   const calc = el("a", "btn primary", `${t("calc")} →`);
   calc.href = `#/calc?c=${encodeURIComponent(c.id)}`;
@@ -71,10 +76,10 @@ export function renderCable(view, ctx, id) {
   const Ls = layers(c);
   const dia = (v, est) => (v ? ` · Ø ${fmt(v, 2)} mm${est ? ` (${t("estimated")})` : ""}` : "");
   const legend = [
-    [t("part_jacket"), [c.jk], c.od],
-    [t("part_shield"), [c.sh], null],
-    [t("part_dielectric"), [c.dm], c.dd, Ls.est.dd],
-    [t("part_conductor"), [c.icm, c.icc], c.icd, Ls.est.icd],
+    [t("part_jacket"), [dt("jk", c.jk)], c.od],
+    [t("part_shield"), [dt("sh", c.sh)], null],
+    [t("part_dielectric"), [dt("dm", c.dm)], c.dd, Ls.est.dd],
+    [t("part_conductor"), [dt("icm", c.icm), dt("icc", c.icc)], c.icd, Ls.est.icd],
   ];
   const fig = el("div", "art-fig");
   fig.innerHTML = cableSvg(c, { w: 360, h: 132, fit: false, numbered: true, span: 0.66 });
@@ -90,10 +95,10 @@ export function renderCable(view, ctx, id) {
   specs.append(el("h2", "h2", t("specs_title")));
   const dl = el("dl", "kv specs");
   dl.innerHTML = SPECS.filter(([k]) => c[k] != null && c[k] !== "")
-    .map(([k, lab, f]) => `<dt>${t("f_" + lab)}</dt><dd>${f ? f(c) : k === "sh" ? markHtml(c[k]) : esc(c[k])}</dd>`).join("");
+    .map(([k, lab, f]) => `<dt>${t("f_" + lab)}</dt><dd>${f ? f(c) : k === "sh" ? markHtml(dt(k, c[k])) : esc(dt(k, c[k]))}</dd>`).join("");
   specs.append(dl);
   if (c.note) specs.append(el("p", "note-box", `<b>${t("notes")}:</b> ${esc(c.note)}`));
-  if (lang === "en") specs.append(el("p", "muted", t("data_lang_note")));
+  if (lang === "en" && c.note) specs.append(el("p", "muted", t("data_lang_note")));
 
   // nokta tabloları
   const pts = el("div", "panel table-wrap");
@@ -146,7 +151,9 @@ export function renderCable(view, ctx, id) {
 }
 
 export function srcItem(db, sid) {
-  const s = db.src[sid] || {};
+  const s0 = db.src[sid] || {};
+  // İngilizce arayüzde tür, tarih ve eklenen açıklamalar çevrilir; serbest notlar (x) özgün kalır
+  const s = lang === "en" ? { ...s0, p: dataEn(s0.p), t: dataEn(s0.t), h: dataEn(s0.h), r: dataEn(s0.r), d: dataEn(s0.d) } : s0;
   const meta = [s.r, s.d].filter(Boolean).join(" · ");
   const title = s.u ? `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)} ↗</a>` : esc(s.t);
   return `<li id="src-${sid}"><span class="sid">${sid}</span><div><b>${esc(s.p || "")}</b> — ${title}` +

@@ -2,7 +2,7 @@
 // URL: #/calc?c=ID&f=MHz&L=m&u=ft&P=W&s=SWR
 import { t, lang, fmt, fmtPct } from "../i18n.js";
 import * as coax from "../coax.js";
-import { fmtMm, classLabel } from "../util.js";
+import { fmtMm, classLabel, cname } from "../util.js";
 
 const FT = coax.FT_PER_M;
 
@@ -157,7 +157,7 @@ export function renderCalc(view, ctx) {
 
     const src = db.src[c.src];
     const foot = el("div", "result-foot");
-    foot.innerHTML = `<b>${esc(c.n)}</b> · ${esc(classLabel(db, c, st.u))} · ${fmtMm(c.od, st.u)}` +
+    foot.innerHTML = `<b>${esc(cname(c))}</b> · ${esc(classLabel(db, c, st.u))} · ${fmtMm(c.od, st.u)}` +
       (src && src.u ? ` · <a href="${esc(src.u)}" target="_blank" rel="noopener" title="${esc(src.p + " — " + src.t)}">${t("source")} ↗</a>` : "");
     box.append(hero, bar, alerts, dl, foot);
     return box;
@@ -178,7 +178,7 @@ export function renderCalc(view, ctx) {
       b.type = "button";
       b.innerHTML = `<span class="an">${esc(x.s)}${x.val === "max" ? `<sup class="ind">${t("ind_max")}</sup>` : ""}</span>` +
         `<span class="num">${fmt(r.totalLossDb, 2)} dB</span><span class="num">${fmt(r.pOutW, 1)} W</span>`;
-      b.title = x.n;
+      b.title = cname(x);
       b.addEventListener("click", () => { st.c = x.id; sel.value = x.id; update(); });
       li.append(b);
       ol.append(li);
@@ -198,7 +198,7 @@ export function renderCalc(view, ctx) {
     for (const c of list) {
       const o = document.createElement("option");
       o.value = c.id;
-      o.textContent = `${c.s} — ${c.n}${c.z !== 50 ? ` (${c.z} Ω)` : ""}`;
+      o.textContent = `${c.s} — ${cname(c)}${c.z !== 50 ? ` (${c.z} Ω)` : ""}`;
       g.append(o);
     }
     return g;

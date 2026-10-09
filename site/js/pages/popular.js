@@ -2,7 +2,7 @@
 // Bant, uzunluk ve birim değişince kartlar yeniden kurulmaz, yalnızca değerleri güncellenir.
 import { t, lang, fmt } from "../i18n.js";
 import * as coax from "../coax.js";
-import { fmtMm, sizeClassLabel } from "../util.js";
+import { fmtMm, sizeClassLabel, cname } from "../util.js";
 import { cableSvg } from "../cableart.js";
 
 const FT = coax.FT_PER_M;
@@ -117,13 +117,13 @@ export function renderPopular(view, ctx) {
   }
 
   function card(c) {
-    const root = el("article", "card" + (c.std ? " is-std" : ""));
+    const root = el("article", "card");
     const cls = el("div", "c-class");
     const title = el("a", "c-title");
     title.textContent = c.s;
     title.href = `#/cable/${encodeURIComponent(c.id)}`;
     const sub = el("div", "c-sub");
-    sub.textContent = c.n;
+    sub.textContent = cname(c);
     const value = el("div", "c-value");
     const bar = el("div", "bar");
     bar.setAttribute("aria-hidden", "true");
