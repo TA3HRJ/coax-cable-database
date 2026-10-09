@@ -2,7 +2,7 @@
 
 A referenced, formula-driven attenuation and specification database for 65 coaxial cables used in amateur radio —
 every value traced to a manufacturer datasheet.
-Live site: **https://ta3hrj.github.io/coax-cable-database/**
+Live site: **https://coax.aprsagent.com/**
 
 ---
 
