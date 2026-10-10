@@ -14,7 +14,8 @@ Live site: **https://coax.aprsagent.com/**
 - **Compare** — up to 8 cables on one log-log chart plus a table at your frequency, length, power and SWR
 - **All cables** — searchable, filterable, sortable catalogue; each cable has a details page with its datasheet
   points and sources
-- TR / EN (follows the browser language), light / dark theme, installable, works offline after the first visit
+- TR / EN (follows the browser language); light theme by default, dark one click away and remembered, as on every
+  aprsagent.com site; installable, works offline after the first visit
 - No backend, no login; served from `site/` by GitHub Pages. The calculation is tested against the Excel workbook
   on every push
 
@@ -26,7 +27,7 @@ Live site: **https://coax.aprsagent.com/**
   (Ecoflex, Aircell), Belden H155/H1000/H2000 Flex, CommScope/Andrew HELIAX, RFS CELLFLEX, Reçber (Turkey),
   Westflex, Ericsson and 75/93 Ω types
 - **1126 attenuation points** and **775 power-handling points**, each stored exactly as published (value + unit)
-  and linked to one of **54 source documents** (title, revision, date, URL, access date)
+  and linked to its source document - **58 sources** in all (title, revision, date, URL, access date)
 - Electrical, mechanical and suitability parameters: velocity factor, capacitance, DC resistance, screening,
   peak power, voltage, bend radius, weight, temperature, jacket, burial/UV, connectors
 - Attenuation at any frequency by **log-log interpolation** between datasheet points (exact at published
@@ -68,7 +69,7 @@ python -X utf8 scripts/build_database.py   # writes TA3HX_Coax_Database.xlsx
 Open the workbook in Excel once and save it so formula results are cached, then:
 
 ```bash
-python -X utf8 scripts/export_db.py        # refreshes export/, docs/data/, test fixture, source index
+python -X utf8 scripts/export_db.py        # refreshes export/, site/data/, test fixture, source index
 ```
 
 `gen_points.py` needs the datasheet PDFs in `kaynaklar/`; download them from the URLs in
@@ -79,7 +80,7 @@ workbook does not require the PDFs.
 
 ```bash
 python -m unittest discover -s tests   # data consistency + Python interpolation vs. Excel
-node --test tests/                     # docs/js/coax.js vs. Excel (Ham_Bands, Calculator, all cables)
+node --test tests/                     # site/js/coax.js vs. Excel (Ham_Bands, Calculator, all cables)
 ```
 
 Without Node, serve the repo root (`python -m http.server`) and open `/tests/parity.html`. Both run on every push
