@@ -80,7 +80,7 @@ workbook does not require the PDFs.
 
 ```bash
 python -m unittest discover -s tests   # data consistency + Python interpolation vs. Excel
-node --test tests/                     # site/js/coax.js vs. Excel (Ham_Bands, Calculator, all cables)
+node --test "tests/*.test.mjs"         # site/js/coax.js vs. Excel (Ham_Bands, Calculator, all cables)
 ```
 
 Without Node, serve the repo root (`python -m http.server`) and open `/tests/parity.html`. Both run on every push

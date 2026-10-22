@@ -1,4 +1,4 @@
-// node --test tests/
+// node --test "tests/*.test.mjs"   (Node 22+ klasör yolunu modül sanar; dosya deseni gerekir)
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";

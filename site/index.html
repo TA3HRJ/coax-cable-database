@@ -21,6 +21,7 @@
     if (!l) l = /^tr\b/i.test(navigator.language || "") ? "tr" : "en";
     document.documentElement.dataset.theme = t;
     document.documentElement.lang = l;
+    if (t === "dark") { var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = "#1b1a16"; }
   })();
 </script>
 <link rel="stylesheet" href="css/app.css">

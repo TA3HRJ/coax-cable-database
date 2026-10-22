@@ -8,7 +8,7 @@ import { el, esc, num, round, fmtF, fmtA, fmtW, indicators, cableSelect, bandChi
 export function renderCompare(view, ctx) {
   const { db, byId } = ctx;
   const p = ctx.params;
-  const fromUrl = (p.get("c") || "").split(",").filter((id) => byId[id]);
+  const fromUrl = [...new Set((p.get("c") || "").split(","))].filter((id) => byId[id]); // tekrar eden kimlik bir kez
   const st = {
     ids: (fromUrl.length ? fromUrl : ctx.cmp.filter((id) => byId[id])).slice(0, SERIES),
     f: num(p.get("f"), 144), L: num(p.get("L"), 20), P: num(p.get("P"), 100), s: Math.max(1, num(p.get("s"), 1)),

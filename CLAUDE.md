@@ -30,7 +30,7 @@ python -X utf8 scripts/build_database.py    # COAX_OUT=... ile başka yola yazı
 # Excel'de aç-hesapla-kaydet (COM: Workbooks.Open, CalculateFull, Save)
 python -X utf8 scripts/export_db.py         # export/, docs/data/, tests/fixtures/, kaynaklar/README.md
 python -m unittest discover -s tests        # veri tutarlılığı
-node --test tests/                          # JS = Excel (Node yoksa: http.server + /tests/parity.html)
+node --test "tests/*.test.mjs"             # JS = Excel; Node 22+ klasör yolunu modül sanar, desen şart (Node yoksa: http.server + /tests/parity.html)
 ```
 
 `export_db.py` Excel'in önbelleğe aldığı formül sonuçlarını okur; openpyxl ile yazılmış ve Excel'de
