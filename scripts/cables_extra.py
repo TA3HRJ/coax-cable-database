@@ -103,7 +103,9 @@ SOURCES_X = [
      "Distribütör veri sayfası, topluluk arşivi (on4kst.com)", "http://www.on4kst.com/10el50/H2000.pdf",
      "kaynaklar/S053_Belden_H2000Flex_DMT.pdf",
      "Belden'in güncel kataloğunda H2000 Flex bulunamadı; Belden 2006 tarihli föyüne (YE00115) erişilemedi. "
-     "Değerler satıcı sayfalarıyla tutarlı (PCS: 50 MHz 2.7, 100 MHz 3.9; koax24: 10 MHz 1.2, 100 MHz 3.8 dB/100m)."),
+     "Değerler satıcı sayfalarıyla tutarlı (PCS: 50 MHz 2.7, 100 MHz 3.9; koax24: 10 MHz 1.2, 100 MHz 3.8 dB/100m). "
+     "Özgün adres 2026-10-22'de erişilemiyordu (on4kst.com tamamı 503); arşiv kopyası: "
+     "https://web.archive.org/web/20260607145223/http://www.on4kst.com/10el50/H2000.pdf"),
     ("S054", "Times Microwave Systems", "LMR-200 Low Loss Flexible Coax Cable Data Sheet", "LMR-200", "-", "2023",
      "Distribütör kopyası (Fairview Microwave)", "https://www.fairviewmicrowave.com/images/productPDF/LMR-200.pdf",
      "kaynaklar/S054_TimesMicrowave_LMR-200_Fairview.pdf", "Yalnızca tekrarlı bükülme yarıçapı için kullanıldı (zayıflama: S001)."),

@@ -310,6 +310,7 @@ sup.tm{font-size:.55em;font-weight:400;margin-left:1px;line-height:0}
 .note-box{margin-top:10px;font-size:13px;background:var(--bg2);border-left:3px solid var(--accent2);padding:8px 10px}
 .src-list{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13.5px}
 .src-list li{display:flex;gap:10px}
+.src-list li>div{min-width:0;overflow-wrap:anywhere} /* uzun adresler (ör. arşiv kopyası) kutuyu taşırmasın */
 .src-list .sid{font:12px var(--mono);color:var(--dim);min-width:38px}
 .src-list li:target{background:var(--accent-soft)}
 .small{font-size:12px}

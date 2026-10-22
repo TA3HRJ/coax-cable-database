@@ -150,6 +150,11 @@ export function renderCable(view, ctx, id) {
   }
 }
 
+/** Kaçışlanmış metindeki http(s) adreslerini bağlantı yapar (ör. kaynak notundaki arşiv kopyası). Sondaki noktalama dışarıda kalır. */
+function linkify(html) {
+  return html.replace(/https?:\/\/[^\s<]+[^\s<.,;:)]/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
+}
+
 export function srcItem(db, sid) {
   const s0 = db.src[sid] || {};
   // İngilizce arayüzde tür, tarih ve eklenen açıklamalar çevrilir; serbest notlar (x) özgün kalır
@@ -157,5 +162,5 @@ export function srcItem(db, sid) {
   const meta = [s.r, s.d].filter(Boolean).join(" · ");
   const title = s.u ? `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)} ↗</a>` : esc(s.t);
   return `<li id="src-${sid}"><span class="sid">${sid}</span><div><b>${esc(s.p || "")}</b> — ${title}` +
-    `<div class="muted">${esc([meta, s.h].filter(Boolean).join(" · "))}</div>${s.x ? `<div class="muted small">${esc(s.x)}</div>` : ""}</div></li>`;
+    `<div class="muted">${esc([meta, s.h].filter(Boolean).join(" · "))}</div>${s.x ? `<div class="muted small">${linkify(esc(s.x))}</div>` : ""}</div></li>`;
 }
