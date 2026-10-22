@@ -19,6 +19,6 @@ jobs:
         with:
           node-version: "24"
       - name: JS hesabı = Excel (eşlik testi)
-        run: node --test tests/
+        run: node --test tests/*.test.mjs
       - name: Kamuya açık metin denetimi
         run: python scripts/check_public_text.py
