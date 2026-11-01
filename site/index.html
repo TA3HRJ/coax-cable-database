@@ -31,9 +31,8 @@
 <a class="skip" href="#view" data-i="skip">İçeriğe geç</a>
 <header class="fam-bar">
   <div class="fam-row">
-    <a class="fam-home" href="https://aprsagent.com/#tools" data-i-title="fam_home_title" title="aprsagent.com — Telsizci araçları">
-      <img src="assets/aprsagent-mark.svg" alt="" width="24" height="24"><span class="t">aprsagent.com</span>
-    </a>
+    <a class="fam-mark" href="assets/aprsagent-mark.svg" data-fam-logo title="APRS-Agent logo — büyük görünüm · large view" aria-label="APRS-Agent logo — büyük görünüm · large view"><img src="assets/aprsagent-mark.svg" alt="" width="24" height="24"></a>
+    <a class="fam-home" href="https://aprsagent.com/#tools" data-i-title="fam_home_title" title="aprsagent.com — Telsizci araçları"><span class="t">aprsagent.com</span></a>
     <span class="fam-sep" aria-hidden="true"></span>
     <a class="fam-site" href="#/popular" data-i-title="app_title" title="Koaksiyel Kablo Veritabanı">COAX<span>-DB</span></a>
     <span class="sp"></span>
@@ -45,6 +44,11 @@
     <a class="ghl" href="https://github.com/TA3HRJ/coax-cable-database" rel="noopener">GitHub ↗</a>
   </div>
 </header>
+<dialog class="fam-logo" id="fam-logo" aria-label="APRS-Agent logo">
+  <img src="assets/aprsagent-mark.svg" alt="APRS-Agent logo">
+  <p>APRS<span>-Agent</span></p>
+  <a href="https://aprsagent.com/">aprsagent.com →</a>
+</dialog>
 <nav class="tab-bar" role="tablist" aria-label="Sayfalar">
   <a class="tab-btn" role="tab" href="#/popular" data-route="popular" data-i="tab_popular">Popüler</a>
   <a class="tab-btn" role="tab" href="#/calc" data-route="calc" data-i="tab_calc">Hesapla</a>
@@ -56,5 +60,10 @@
   <noscript><p class="empty">Bu site JavaScript gerektirir. / This site requires JavaScript.</p></noscript>
 </main>
 <footer class="fam-foot" id="foot"></footer>
+<script>(function(){var d=document.getElementById("fam-logo");
+if(!d||typeof d.showModal!=="function")return;
+document.querySelectorAll("[data-fam-logo]").forEach(function(a){a.addEventListener("click",function(e){
+e.preventDefault();d.showModal();});});
+d.addEventListener("click",function(e){if(!e.target.closest("a"))d.close();});})();</script>
 </body>
 </html>
